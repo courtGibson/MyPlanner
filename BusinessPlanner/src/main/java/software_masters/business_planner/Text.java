@@ -1,5 +1,5 @@
 package software_masters.business_planner;
-
+import java.util.Scanner;
 
 /**
  * This class represents a content section that is all text
@@ -15,20 +15,39 @@ package software_masters.business_planner;
 
 public class Text implements Content {
 
+	private String textString;
+
 	/**
-	 * This is a method for the user to edit data within content
+	 * @return the textString
 	 */
-	public void edit() {
-		// TODO Auto-generated method stub
-		
+	private String getTextString() {
+		return textString;
 	}
 
 	/**
-	 * this method visualizes content 
+	 * @param textString the textString to set
+	 */
+	private void setTextString(String textString) {
+		this.textString = textString;
+	}
+
+	/**
+	 * this method demonstrates how a user might interact with the content of TemplateSection
 	 */
 	public void display() {
-		// TODO Auto-generated method stub
-		
+		Scanner input = new Scanner(System.in);
+		setTextString(input.next());
+		System.out.println(textString);
+	}
+	
+	/**
+	 * @return copy of this content object
+	 */
+	public Content copy()
+	{
+		Text copy = new Text();
+		copy.setTextString(this.textString);
+		return copy;
 	}
 
 }

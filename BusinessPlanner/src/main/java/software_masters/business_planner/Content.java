@@ -14,11 +14,12 @@ package software_masters.business_planner;
 
 public interface Content {
 	/**
-	 * This is a method for the user to edit data within content
-	 */
-	public void edit();
-	/**
 	 * this method visualizes content 
 	 */
 	public void display();
+	/**
+	 * 
+	 * @return copy of the content object
+	 */
+	public Content copy();
 }

@@ -1,5 +1,13 @@
 package software_masters.business_planner;
 
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
 /**
  * This class can be both a representation of a business plan or a business plan outline.
  * 
@@ -87,13 +95,22 @@ public class Template {
 	public Template deepCopy() {
 		Template copy = new Template(this.developerTemplateName, this.userTemplateName, this.root.deepCopy());
 		return copy;
-		int 2;
+		
 	}
 	
 	/**
 	 * This method serializes the object.
 	 */
-	public void save() {
+	public void save(String filename) 
+	{
+		XMLEncoder encoder=null;
+		try{
+		encoder=new XMLEncoder(new BufferedOutputStream(new FileOutputStream(filename)));
+		}catch(FileNotFoundException fileNotFound){
+			System.out.println("ERROR: While Creating or Opening the File dvd.xml");
+		}
+		encoder.writeObject(this);
+		encoder.close();
 		
 	}
 	
@@ -105,7 +122,13 @@ public class Template {
 	 * @return a template object from memory
 	 */
 	public static Template load(String filepath) {
-		return null;
+			XMLDecoder decoder=null;
+			try {
+				decoder=new XMLDecoder(new BufferedInputStream(new FileInputStream(filepath)));
+			} catch (FileNotFoundException e) {
+				System.out.println("ERROR: File dvd.xml not found");
+			}
+			return (Template)decoder.readObject();
 	}
 
 }
