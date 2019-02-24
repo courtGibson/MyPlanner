@@ -22,8 +22,8 @@ public class TemplateSection {
 	private TemplateSection parent;
 	private boolean canCopy;
 	
-	private ArrayList<TemplateSection> children;
-	private ArrayList<Content> contents;
+	private ArrayList<TemplateSection> children=new ArrayList<TemplateSection>();
+	private ArrayList<Content> contents=new ArrayList<Content>();
 	
 	/**
 	 * constructor for serialization
