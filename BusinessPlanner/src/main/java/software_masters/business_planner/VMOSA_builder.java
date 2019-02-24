@@ -27,6 +27,7 @@ public class VMOSA_builder {
 		return section;
 	}
 	public static void main(String[] args) {
+		System.out.println("Start");
 		TemplateSection Vision = makeSection("Vision", "Vision", false);
 		TemplateSection Mission = makeSection("Mission", "Mission", false);
 		TemplateSection Objective = makeSection("Objectives", null, true);
@@ -44,8 +45,8 @@ public class VMOSA_builder {
 		Mission.setParent(Vision);
 		
 		Template VMOSA = new Template("VMOSA", null, Vision);
-		VMOSA.save("VMOSA.dev");
-		
+		VMOSA.save("VMOSA_dev.xml");
+		System.out.println("end");
 	}
 
 }
