@@ -45,7 +45,7 @@ public class VMOSA_builder {
 		Mission.setParent(Vision);
 		
 		Template VMOSA = new Template("VMOSA", null, Vision);
-		VMOSA.save("VMOSA_dev.xml");
+		VMOSA.save();
 		System.out.println("end");
 	}
 

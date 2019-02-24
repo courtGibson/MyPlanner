@@ -101,8 +101,17 @@ public class Template {
 	/**
 	 * This method serializes the object.
 	 */
-	public void save(String filename) 
+	public void save()
 	{
+		String filename;
+		if (this.userTemplateName == null)
+		{
+			filename = this.developerTemplateName+".dev";
+		}
+		else
+		{
+			filename = this.userTemplateName+".user";
+		}
 		XMLEncoder encoder=null;
 		try{
 		encoder=new XMLEncoder(new BufferedOutputStream(new FileOutputStream(filename)));
