@@ -107,7 +107,7 @@ public class Template {
 		try{
 		encoder=new XMLEncoder(new BufferedOutputStream(new FileOutputStream(filename)));
 		}catch(FileNotFoundException fileNotFound){
-			System.out.println("ERROR: While Creating or Opening the File dvd.xml");
+			System.out.println("ERROR: While Creating or Opening the File "+filename);
 		}
 		encoder.writeObject(this);
 		encoder.close();
@@ -126,7 +126,7 @@ public class Template {
 			try {
 				decoder=new XMLDecoder(new BufferedInputStream(new FileInputStream(filepath)));
 			} catch (FileNotFoundException e) {
-				System.out.println("ERROR: File dvd.xml not found");
+				System.out.println("ERROR: File "+filepath+" not found");
 			}
 			return (Template)decoder.readObject();
 	}
