@@ -37,6 +37,7 @@ public class Text implements Content {
 	public void display() {
 		Scanner input = new Scanner(System.in);
 		setTextString(input.next());
+		input.close();
 		System.out.println(textString);
 	}
 	
