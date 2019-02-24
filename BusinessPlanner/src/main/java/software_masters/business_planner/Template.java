@@ -85,7 +85,9 @@ public class Template {
 	 * @return a copy of the template object
 	 */
 	public Template deepCopy() {
-		return null;
+		Template copy = new Template(this.developerTemplateName, this.userTemplateName, this.root.deepCopy());
+		return copy;
+		int 2;
 	}
 	
 	/**
