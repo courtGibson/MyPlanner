@@ -107,6 +107,10 @@ public class TemplateSection {
 	 * @return a clone of the TemplateSection
 	 */
 	public TemplateSection deepCopy() {
+		TemplateSection copy=new TemplateSection(this.category,this.name,this.childLim);
+		for(Content c1: this.contents) {
+			copy.addContent(c1.copy());
+		}
 		return null;
 	}
 	
