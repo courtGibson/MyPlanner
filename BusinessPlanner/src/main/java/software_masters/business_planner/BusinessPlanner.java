@@ -19,8 +19,6 @@ class BusinessPlanner {
 	private Template developerTemplate;
 	private TemplateSection current;
 	
-	
-	
 	public static void main(String[] args) {
 		
 	}
