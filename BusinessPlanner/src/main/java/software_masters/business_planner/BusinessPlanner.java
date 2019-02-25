@@ -57,6 +57,25 @@ class BusinessPlanner {
 		return false;
 		
 	}
+	/**
+	 * Allows the user to delete added sections with recursion
+	 * @param section
+	 */
+	public void makeRemovable(TemplateSection section)
+	{
+		section.setCanRemove(true);
+		/*Base case - Current section has no children */
+		if(section.getChildren().isEmpty())
+		{}
+		/*Recursive case - Current section has children */
+		else
+		{
+			for(TemplateSection c: section.getChildren())
+			{
+				makeRemovable(c);
+			}
+		}
+	}
 	
 	/**
 	 * Recursively finds a templateSection with a given category.
@@ -84,6 +103,23 @@ class BusinessPlanner {
 			}
 		}
 		return null;
+	}
+	
+	/**
+	 * Allows user to navigate to parent of the currently accessed template section
+	 */
+	public void accessParent()
+	{
+		current = current.getParent();
+	}
+	
+	/**
+	 * Allows user to navigate to the child of the currently accessed template section, given its position in the children array
+	 * @param index
+	 */
+	public void accessChild(int index)
+	{
+		current = current.getChildren().get(index);
 	}
 	
 	public static void main(String[] args) {

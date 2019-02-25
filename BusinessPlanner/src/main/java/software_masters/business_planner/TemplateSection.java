@@ -21,6 +21,7 @@ public class TemplateSection {
 	
 	private TemplateSection parent;
 	private boolean canCopy;
+	private boolean canRemove = false;
 	
 	private ArrayList<TemplateSection> children=new ArrayList<TemplateSection>();
 	private ArrayList<Content> contents=new ArrayList<Content>();
@@ -48,6 +49,20 @@ public class TemplateSection {
 	 */
 	public boolean canCopy() {
 		return canCopy;
+	}
+	
+	/**
+	 * @return if TemplateSection can be removed
+	 */
+	public boolean canRemove() {
+		return canRemove;
+	}
+
+	/**
+	 * @param Sets if TemplateSection can be removed
+	 */
+	public void setCanRemove(boolean canRemove) {
+		this.canRemove = canRemove;
 	}
 
 	/**
