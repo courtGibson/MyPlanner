@@ -7,10 +7,6 @@ import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Map;
 
 /**
  * This class can be both a representation of a business plan or a business plan outline.
@@ -28,7 +24,6 @@ public class Template {
 	private String developerTemplateName;
 	private String userTemplateName;
 	private TemplateSection root;
-	private Map<String, int[]> categoryLim = new HashMap<String, int[]>();
 	
 	/**
 	 * This constructor creates a default object for use by XML encoder
@@ -144,36 +139,9 @@ public class Template {
 			}
 			return (Template)decoder.readObject();
 	}
-	/**
-	 * Sets the minimum and maximum number of templateSections of each category which are allowed. These values are stored in a hash table, mapping the category
-	 * string to an array of integers. The first position in the array is the minimum, the second is the maximum, and the third is the current number of templateSections
-	 * in that category.
-	 * @param category
-	 * @param min
-	 * @param max
-	 */
-	public void setCatLimits(String category, int min, int max)
-	{
-		int[] catLimits = new int[]{min, max, 1};
-		this.categoryLim.put(category, catLimits);
-	}
-	
-	/**
-	 * @param category
-	 * @return boolean indicating if the user is allowed to add another templateSection of a given category
-	 */
-	public boolean canCopySection(String category)
-	{
-		return categoryLim.get(category)[2] <= categoryLim.get(category)[1];
-	}
-	
-	/**
-	 * @param category
-	 * @return boolean indicating if the user is allowed to remove a templateSection of a given category
-	 */
-	public boolean canRemoveSection(String category)
-	{
-		return categoryLim.get(category)[2] >= categoryLim.get(category)[0];
-	}
 
 }
+
+
+
+

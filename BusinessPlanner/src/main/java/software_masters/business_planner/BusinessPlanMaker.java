@@ -27,7 +27,6 @@ class BusinessPlanMaker {
 	{
 		developerTemplate = Template.load(filepath);
 		userTemplate = developerTemplate.deepCopy();
-		current = userTemplate.getRoot();
 	}
 	
 	/**
@@ -38,32 +37,17 @@ class BusinessPlanMaker {
 	{
 		userTemplate = Template.load(filepath);
 		developerTemplate = Template.load(userTemplate.getDeveloperTemplateName()+".dev");
-		current = userTemplate.getRoot();
 	}
 	/**
 	 * Adds a copy of the type of TemplateSection currently accessed by the user. Only works if the section is allowed
 	 * to be copied.
 	 */
-	
-	/**
-	 * Allows user to save their userTemplate business plan
-	 * @param filepath
-	 */
-	public void saveUserTemplate(String filepath)
-	{
-		userTemplate.save();
-	}
-	
-	/**
-	 * Allows user to add a copy of the templateSection with the same category as the templateSection currently accessed. Only works if the 
-	 * currently accessed section was marked copyable by the developer through the canCopy boolean.
-	 * @return boolean indicating if addSection actually added a section
-	 */
 	public boolean addSection()
 	{
-		String currCategory = current.getCategory();
-		if (developerTemplate.canCopySection(currCategory))
+		if (current.canCopy())
 		{
+			String currCategory = current.getCategory();
+			
 			TemplateSection sectionToCopy = this.findTemplateSection(developerTemplate.getRoot(), currCategory);
 			TemplateSection copy = sectionToCopy.deepCopy();
 			current.getParent().addChild(copy);
@@ -73,12 +57,26 @@ class BusinessPlanMaker {
 		return false;
 		
 	}
-
+	/**
+	 * Removes the currently access section if allowed, sets current section to parent of removed section.
+	 * @return boolean indicating if section actually removed
+	 */
+	public boolean removeSection()
+	{
+		if (current.canRemove())
+		{
+			current.getParent().removeChild(current);
+			current = current.getParent();
+			return true;
+		}
+		return false;
+	}
+	
 	/**
 	 * Recursively finds a templateSection with a given category.
 	 * @param section
 	 * @param targetCategory
-	 * @return TemplateSection of developerTemplate corresponding to the section the user wants to add
+	 * @return TemplateSection of developerTemplate which  user wants to add
 	 */
 	public TemplateSection findTemplateSection(TemplateSection section, String targetCategory)
 	{
@@ -119,5 +117,8 @@ class BusinessPlanMaker {
 		current = current.getChildren().get(index);
 	}
 	
+	public static void main(String[] args) {
+		
+	}
 	
 }

@@ -20,6 +20,7 @@ public class TemplateSection {
 	private String name;
 	
 	private TemplateSection parent;
+	private boolean canCopy;
 	
 	private ArrayList<TemplateSection> children=new ArrayList<TemplateSection>();
 	private ArrayList<Content> contents=new ArrayList<Content>();
@@ -28,18 +29,33 @@ public class TemplateSection {
 	 * constructor for serialization
 	 */
 	public TemplateSection() {
-		this(null,null);
+		this(null,null,true);
 	}
 	
 	/**
 	 * @param category
 	 * @param name
+	 * @param canCopy
 	 */
-	public TemplateSection(String category, String name) {
+	public TemplateSection(String category, String name, boolean canCopy) {
 		this.category = category;
 		this.name = name;
+		this.canCopy = canCopy;
 	}
 
+	/**
+	 * @return if the TemplateSection can be copied
+	 */
+	public boolean canCopy() {
+		return canCopy;
+	}
+	
+	/**
+	 * @return if TemplateSection can be removed
+	 */
+	public boolean canRemove() {
+		return parent.getChildren().isEmpty();
+	}
 
 
 	/**
@@ -94,10 +110,15 @@ public class TemplateSection {
 	/**
 	 * This method adds a child TemplateSection object
 	 * 
-	 * @param child a TemplateSection object
+	 * @params child a TemplateSection object
 	 */
 	public void addChild(TemplateSection child) {
 		this.children.add(child);
+	}
+	
+	public void removeChild(TemplateSection child)
+	{
+		this.children.remove(child);
 	}
 
 	/**
@@ -110,7 +131,7 @@ public class TemplateSection {
 	/**
 	 * This method adds a content object to section
 	 * 
-	 * @param c1 a content object to be added to list of contents
+	 * @params c1 a content object to be added to list of contents
 	 */
 	public void addContent(Content c1) {
 		this.contents.add(c1);
@@ -120,7 +141,7 @@ public class TemplateSection {
 	 * @return a clone of the TemplateSection using a recursive deep copy method.
 	 */
 	public TemplateSection deepCopy() {
-		TemplateSection copy=new TemplateSection(this.category,this.name);
+		TemplateSection copy=new TemplateSection(this.category,this.name,this.canCopy);
 		for(Content c1: this.contents) {
 			copy.addContent(c1.copy());
 		}
