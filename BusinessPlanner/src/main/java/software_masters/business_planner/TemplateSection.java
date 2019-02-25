@@ -116,6 +116,10 @@ public class TemplateSection {
 		this.children.add(child);
 	}
 	
+	/**
+	 *Allows user to remove a child 
+	 * @param child
+	 */
 	public void removeChild(TemplateSection child)
 	{
 		this.children.remove(child);
