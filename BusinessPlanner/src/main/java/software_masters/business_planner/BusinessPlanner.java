@@ -27,6 +27,7 @@ class BusinessPlanner {
 	{
 		developerTemplate = Template.load(filepath);
 		userTemplate = developerTemplate.deepCopy();
+		current = userTemplate.getRoot();
 	}
 	
 	/**
@@ -37,46 +38,43 @@ class BusinessPlanner {
 	{
 		userTemplate = Template.load(filepath);
 		developerTemplate = Template.load(userTemplate.getDeveloperTemplateName()+".dev");
+		current = userTemplate.getRoot();
 	}
 	/**
 	 * Adds a copy of the type of TemplateSection currently accessed by the user. Only works if the section is allowed
 	 * to be copied.
 	 */
+	
+	/**
+	 * Allows user to save their userTemplate business plan
+	 * @param filepath
+	 */
+	public void saveUserTemplate(String filepath)
+	{
+		userTemplate.save();
+	}
+	
+	/**
+	 * Allows user to add a copy of the templateSection with the same category as the templateSection currently accessed. Only works if the 
+	 * currently accessed section was marked copyable by the developer through the canCopy boolean.
+	 * @return boolean indicating if addSection actually added a section
+	 */
 	public boolean addSection()
 	{
-		if (current.canCopy())
+		String currCategory = current.getCategory();
+		if (developerTemplate.canCopySection(currCategory))
 		{
-			String currCategory = current.getCategory();
-			
 			TemplateSection sectionToCopy = this.findTemplateSection(developerTemplate.getRoot(), currCategory);
 			TemplateSection copy = sectionToCopy.deepCopy();
 			current.getParent().addChild(copy);
 			copy.setParent(current);
+			makeRemovable(copy);
 			return true;
 		}
 		return false;
 		
 	}
-	/**
-	 * Allows the user to delete added sections with recursion
-	 * @param section
-	 */
-	public void makeRemovable(TemplateSection section)
-	{
-		section.setCanRemove(true);
-		/*Base case - Current section has no children */
-		if(section.getChildren().isEmpty())
-		{}
-		/*Recursive case - Current section has children */
-		else
-		{
-			for(TemplateSection c: section.getChildren())
-			{
-				makeRemovable(c);
-			}
-		}
-	}
-	
+
 	/**
 	 * Recursively finds a templateSection with a given category.
 	 * @param section

@@ -20,8 +20,6 @@ public class TemplateSection {
 	private String name;
 	
 	private TemplateSection parent;
-	private boolean canCopy;
-	private boolean canRemove = false;
 	
 	private ArrayList<TemplateSection> children=new ArrayList<TemplateSection>();
 	private ArrayList<Content> contents=new ArrayList<Content>();
@@ -30,40 +28,19 @@ public class TemplateSection {
 	 * constructor for serialization
 	 */
 	public TemplateSection() {
-		this(null,null,true);
+		this(null,null);
 	}
 	
 	/**
 	 * @param category
 	 * @param name
-	 * @param canCopy
 	 */
-	public TemplateSection(String category, String name, boolean canCopy) {
+	public TemplateSection(String category, String name) {
 		this.category = category;
 		this.name = name;
-		this.canCopy = canCopy;
 	}
 
-	/**
-	 * @return if the TemplateSection can be copied
-	 */
-	public boolean canCopy() {
-		return canCopy;
-	}
-	
-	/**
-	 * @return if TemplateSection can be removed
-	 */
-	public boolean canRemove() {
-		return canRemove;
-	}
 
-	/**
-	 * @param Sets if TemplateSection can be removed
-	 */
-	public void setCanRemove(boolean canRemove) {
-		this.canRemove = canRemove;
-	}
 
 	/**
 	 * @return the category
@@ -117,7 +94,7 @@ public class TemplateSection {
 	/**
 	 * This method adds a child TemplateSection object
 	 * 
-	 * @params child a TemplateSection object
+	 * @param child a TemplateSection object
 	 */
 	public void addChild(TemplateSection child) {
 		this.children.add(child);
@@ -133,7 +110,7 @@ public class TemplateSection {
 	/**
 	 * This method adds a content object to section
 	 * 
-	 * @params c1 a content object to be added to list of contents
+	 * @param c1 a content object to be added to list of contents
 	 */
 	public void addContent(Content c1) {
 		this.contents.add(c1);
@@ -143,7 +120,7 @@ public class TemplateSection {
 	 * @return a clone of the TemplateSection using a recursive deep copy method.
 	 */
 	public TemplateSection deepCopy() {
-		TemplateSection copy=new TemplateSection(this.category,this.name,this.canCopy);
+		TemplateSection copy=new TemplateSection(this.category,this.name);
 		for(Content c1: this.contents) {
 			copy.addContent(c1.copy());
 		}
