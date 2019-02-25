@@ -13,7 +13,7 @@ package software_masters.business_planner;
  */
 
 
-class BusinessPlanner {
+class BusinessPlanMaker {
 
 	private Template userTemplate;
 	private Template developerTemplate;
@@ -68,7 +68,6 @@ class BusinessPlanner {
 			TemplateSection copy = sectionToCopy.deepCopy();
 			current.getParent().addChild(copy);
 			copy.setParent(current);
-			makeRemovable(copy);
 			return true;
 		}
 		return false;
@@ -120,8 +119,5 @@ class BusinessPlanner {
 		current = current.getChildren().get(index);
 	}
 	
-	public static void main(String[] args) {
-		
-	}
 	
 }
