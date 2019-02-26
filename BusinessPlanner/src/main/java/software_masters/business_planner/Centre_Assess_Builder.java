@@ -14,11 +14,10 @@ package software_masters.business_planner;
  * 
  * 
  */
+
+/* These template builders could implement a super class since some of it is the same. at the same time these are throw away classes once run. */
 public class Centre_Assess_Builder {
 
-	/**
-	 * @param args
-	 */
 	private static TemplateSection makeSection(String category, String name, boolean canCopy)
 	{
 		TemplateSection section = new TemplateSection(category, name, canCopy);
@@ -26,8 +25,8 @@ public class Centre_Assess_Builder {
 		section.addContent(textContent);		
 		return section;
 	}
-	public static void main(String[] args) {
-		System.out.println("Start");
+	
+	public static Template generateTemplate() {
 		TemplateSection collegeMission = makeSection("College Mission", "College Mission", false);
 		TemplateSection programMission = makeSection("Program Mission", "Program Mission", false);
 		TemplateSection goal = makeSection("Goals", null, true);
@@ -47,8 +46,13 @@ public class Centre_Assess_Builder {
 		goal.setParent(programMission);
 		programMission.setParent(collegeMission);
 		
-		Template Centre_Assessment = new Template("Centre_Assessment", null, collegeMission);
+		return new Template("Centre_Assessment", null, collegeMission);
+	}
+	public static void main(String[] args) {
+		System.out.println("Start");
+		Template Centre_Assessment=generateTemplate();
 		Centre_Assessment.save();
 		System.out.println("end");
-	}	
+	}
+	
 }

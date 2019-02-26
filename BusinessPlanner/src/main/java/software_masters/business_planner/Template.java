@@ -87,14 +87,16 @@ public class Template {
 		this.root = root;
 	}
 	
-	/**
-	 * This method returns a deepCopy of the template object.
-	 * @return a copy of the template object
-	 */
-	public Template deepCopy() {
-		Template copy = new Template(this.developerTemplateName, this.userTemplateName, this.root.deepCopy());
-		return copy;
-	}
+/* this method is useless because of can copy restrictions */
+	
+//	/**
+//	 * This method returns a deepCopy of the template object.
+//	 * @return a copy of the template object
+//	 */
+//	public Template deepCopy() {
+//		Template copy = new Template(this.developerTemplateName, this.userTemplateName, this.root.deepCopy());
+//		return copy;
+//	}
 	
 	/**
 	 * This method serializes the object.

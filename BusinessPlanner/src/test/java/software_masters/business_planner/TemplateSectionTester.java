@@ -1,4 +1,4 @@
-package SoftwareMasters.BusinessPlanner;
+package software_masters.business_planner;
 
 import junit.framework.TestCase;
 
@@ -7,6 +7,13 @@ public class TemplateSectionTester extends TestCase {
 	 * Verifies method can add children to TemplateSection
 	 */
 	public void testAddChild() {
+		fail("not yet implemented");
+	}
+	
+	/**
+	 * Verifies method can get a specific child from TemplateSection
+	 */
+	public void testGetChild() {
 		fail("not yet implemented");
 	}
 	

@@ -14,11 +14,10 @@ package software_masters.business_planner;
  * 
  * 
  */
+
+/* These template builders could implement a super class since some of it is the same. at the same time these are throw away classes once run. */
 public class VMOSA_builder {
 
-	/**
-	 * @param args
-	 */
 	private static TemplateSection makeSection(String category, String name, boolean canCopy)
 	{
 		TemplateSection section = new TemplateSection(category, name, canCopy);
@@ -26,8 +25,8 @@ public class VMOSA_builder {
 		section.addContent(textContent);		
 		return section;
 	}
-	public static void main(String[] args) {
-		System.out.println("Start");
+	
+	public static Template generateTemplate() {
 		TemplateSection Vision = makeSection("Vision", "Vision", false);
 		TemplateSection Mission = makeSection("Mission", "Mission", false);
 		TemplateSection Objective = makeSection("Objectives", null, true);
@@ -44,7 +43,12 @@ public class VMOSA_builder {
 		Objective.setParent(Mission);
 		Mission.setParent(Vision);
 		
-		Template VMOSA = new Template("VMOSA", null, Vision);
+		return new Template("VMOSA", null, Vision);
+	}
+	
+	public static void main(String[] args) {
+		System.out.println("Start");
+		Template VMOSA = generateTemplate();
 		VMOSA.save();
 		System.out.println("end");
 	}

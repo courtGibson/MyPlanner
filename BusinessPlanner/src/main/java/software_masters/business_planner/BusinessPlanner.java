@@ -27,7 +27,7 @@ class BusinessPlanner {
 	public void chooseTemplate(String filepath)
 	{
 		developerTemplate = Template.load(filepath);
-		userTemplate = developerTemplate.deepCopy();
+		userTemplate = Template.load(filepath);
 	}
 	
 	/**

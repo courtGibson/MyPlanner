@@ -1,4 +1,4 @@
-package SoftwareMasters.BusinessPlanner;
+package software_masters.business_planner;
 
 import junit.framework.TestCase;
 

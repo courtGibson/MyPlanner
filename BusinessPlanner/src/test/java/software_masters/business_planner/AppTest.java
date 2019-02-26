@@ -1,4 +1,4 @@
-package SoftwareMasters.BusinessPlanner;
+package software_masters.business_planner;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -7,8 +7,7 @@ import junit.framework.TestSuite;
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-    extends TestCase
+public class AppTest extends TestCase
 {
     /**
      * Create the test case

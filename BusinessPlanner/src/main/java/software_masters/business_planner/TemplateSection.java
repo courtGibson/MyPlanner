@@ -68,6 +68,7 @@ public class TemplateSection {
 	/**
 	 * @param category the category to set
 	 */
+	/* This method can be abused. Maybe this should not be allowed */
 	public void setCategory(String category) {
 		this.category = category;
 	}
@@ -129,6 +130,16 @@ public class TemplateSection {
 		}
 		return false;
 	}
+	
+	/**
+	 * This method adds a child TemplateSection object
+	 * 
+	 * @params index the location of child in arraylist of children
+	 * @return the child object associated with specified index
+	 */
+	public TemplateSection getChild(int index) {
+		return this.children.get(index);
+	}
 
 	/**
 	 * @return the contents
@@ -151,7 +162,7 @@ public class TemplateSection {
 	 * @return a clone of the TemplateSection using a recursive deep copy method.
 	 */
 	public TemplateSection deepCopy() {
-		if (!this.canCopy) {
+		if (!this.canCopy()) {
 			return null;
 		}
 		return recDeepCopyHelper();

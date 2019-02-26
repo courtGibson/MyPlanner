@@ -35,9 +35,10 @@ public class Text implements Content {
 	 * this method demonstrates how a user might interact with the content of TemplateSection
 	 */
 	public void display() {
-		Scanner input = new Scanner(System.in);
-		setTextString(input.next());
-		input.close();
+//		Scanner input = new Scanner(System.in);
+//		setTextString(input.next());
+//		input.close();
+		setTextString("display");
 		System.out.println(textString);
 	}
 	
