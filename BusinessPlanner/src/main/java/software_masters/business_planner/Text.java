@@ -20,14 +20,14 @@ public class Text implements Content {
 	/**
 	 * @return the textString
 	 */
-	private String getTextString() {
+	public String getTextString() {
 		return textString;
 	}
 
 	/**
 	 * @param textString the textString to set
 	 */
-	private void setTextString(String textString) {
+	public void setTextString(String textString) {
 		this.textString = textString;
 	}
 

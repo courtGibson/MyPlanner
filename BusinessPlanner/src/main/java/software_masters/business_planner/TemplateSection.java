@@ -54,7 +54,7 @@ public class TemplateSection {
 	 * @return if TemplateSection can be removed
 	 */
 	public boolean canRemove() {
-		return parent.getChildren().isEmpty();
+		return (parent.getChildren().size()>1);
 	}
 
 
@@ -117,12 +117,17 @@ public class TemplateSection {
 	}
 	
 	/**
-	 *Allows user to remove a child 
+	 *Allows user to remove a child if at least one child still exists.
 	 * @param child
+	 * @return boolean indicating if child was removed
 	 */
-	public void removeChild(TemplateSection child)
+	public boolean removeChild(TemplateSection child)
 	{
-		this.children.remove(child);
+		if (!this.canRemove()) {
+			this.children.remove(child);
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -142,9 +147,21 @@ public class TemplateSection {
 	}
 	
 	/**
+	 * This method determines if deep copy is allowed and if so initiates a recursive deep copy algorithm.
 	 * @return a clone of the TemplateSection using a recursive deep copy method.
 	 */
 	public TemplateSection deepCopy() {
+		if (!this.canCopy) {
+			return null;
+		}
+		return recDeepCopyHelper();
+	}
+	
+	/**
+	 * This method is a helper for deep copy. It was separated from deep copy to isolate the recursion algorithm.
+	 * @return a clone of the TemplateSection using a recursive deep copy method.
+	 */
+	private TemplateSection recDeepCopyHelper() {
 		TemplateSection copy=new TemplateSection(this.category,this.name,this.canCopy);
 		for(Content c1: this.contents) {
 			copy.addContent(c1.copy());
@@ -160,12 +177,12 @@ public class TemplateSection {
 			TemplateSection temp;
 			for(TemplateSection c: this.children)
 			{
-				temp = c.deepCopy();
+				temp = c.recDeepCopyHelper();
 				copy.addChild(temp);
 				temp.setParent(copy);
 			}
 			return copy;
-		}	
+		}
 	}
 	
 	

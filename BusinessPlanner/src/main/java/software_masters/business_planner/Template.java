@@ -88,14 +88,12 @@ public class Template {
 	}
 	
 	/**
-	 * This method returns a deepCopy of the template object
-	 * 
+	 * This method returns a deepCopy of the template object.
 	 * @return a copy of the template object
 	 */
 	public Template deepCopy() {
 		Template copy = new Template(this.developerTemplateName, this.userTemplateName, this.root.deepCopy());
 		return copy;
-		
 	}
 	
 	/**
