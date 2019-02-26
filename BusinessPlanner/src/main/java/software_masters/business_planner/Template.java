@@ -164,8 +164,8 @@ public class Template {
 			return (Template)decoder.readObject();
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
+	/** 
+	 * Tests if two template objects are equal, useful for testing
 	 */
 	@Override
 	public boolean equals(Object obj) {

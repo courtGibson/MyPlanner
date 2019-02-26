@@ -22,6 +22,7 @@ public class TemplateSection {
 	private TemplateSection parent;
 	private boolean canCopy;
 	
+
 	private ArrayList<TemplateSection> children=new ArrayList<TemplateSection>();
 	private ArrayList<Content> contents=new ArrayList<Content>();
 	
@@ -46,9 +47,17 @@ public class TemplateSection {
 	/**
 	 * @return if the TemplateSection can be copied
 	 */
-	public boolean canCopy() {
+	public boolean isCanCopy() {
 		return canCopy;
 	}
+	
+	/**
+	 * @param canCopy the canCopy to set
+	 */
+	public void setCanCopy(boolean canCopy) {
+		this.canCopy = canCopy;
+	}
+
 	
 	/**
 	 * @return if TemplateSection can be removed
@@ -111,7 +120,7 @@ public class TemplateSection {
 	/**
 	 * This method adds a child TemplateSection object
 	 * 
-	 * @params child a TemplateSection object
+	 * @param child a TemplateSection object
 	 */
 	public void addChild(TemplateSection child) {
 		this.children.add(child);
@@ -140,6 +149,15 @@ public class TemplateSection {
 	public TemplateSection getChild(int index) {
 		return this.children.get(index);
 	}
+	
+	
+	/**
+	 * @param children the children to set
+	 */
+	public void setChildren(ArrayList<TemplateSection> children) {
+		this.children = children;
+	}
+
 
 	/**
 	 * @return the contents
@@ -147,6 +165,14 @@ public class TemplateSection {
 	public ArrayList<Content> getContents() {
 		return contents;
 	}
+	
+	/**
+	 * @param contents the contents to set
+	 */
+	public void setContents(ArrayList<Content> contents) {
+		this.contents = contents;
+	}
+
 
 	/**
 	 * This method adds a content object to section
@@ -162,12 +188,13 @@ public class TemplateSection {
 	 * @return a clone of the TemplateSection using a recursive deep copy method.
 	 */
 	public TemplateSection deepCopy() {
-		if (!this.canCopy()) {
+		if (!this.isCanCopy()) {
 			return null;
 		}
 		return recDeepCopyHelper();
 	}
 	
+
 	/**
 	 * This method is a helper for deep copy. It was separated from deep copy to isolate the recursion algorithm.
 	 * @return a clone of the TemplateSection using a recursive deep copy method.
@@ -197,8 +224,8 @@ public class TemplateSection {
 	}
 
 
-	/** (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
+	/** 
+	 * Tests if two templateSections are equal, useful for testing
 	 */
 	@Override
 	public boolean equals(Object obj) {

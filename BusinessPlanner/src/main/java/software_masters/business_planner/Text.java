@@ -52,8 +52,8 @@ public class Text implements Content {
 		return copy;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
+	/** 
+	 * Tests if two text objects are equal, useful for testing
 	 */
 	@Override
 	public boolean equals(Object obj) {

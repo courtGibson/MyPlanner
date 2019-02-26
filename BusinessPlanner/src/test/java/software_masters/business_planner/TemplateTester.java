@@ -13,7 +13,7 @@ public class TemplateTester extends TestCase {
 		Template VMOSA_clone=Template.loadDeveloperTemplate("VMOSA");
 		
 		//verify loaded object and serialized object contain the same content
-		Assert.assertEquals(VMOSA, VMOSA_clone);
+		Assert.assertTrue(VMOSA.equals(VMOSA_clone));
 		
 		//verify changing one does not change the other
 		makeChange(VMOSA,VMOSA_clone);
@@ -33,19 +33,17 @@ public class TemplateTester extends TestCase {
 		
 		/* Add extra child branch and test serialization process */
 		TemplateSection vision=userVMOSA.getRoot();
-		Assert.assertNotNull(vision);
 		TemplateSection mission=vision.getChild(0);
-		Assert.assertNotNull(mission);
 		TemplateSection objective=mission.getChild(0).deepCopy();	
 		mission.addChild(objective);
 		objective.setParent(mission);
 		
 		
 		userVMOSA.save();
-		Template userCopy=null;//Template.load("MyBusinessPlan.user");
+		Template userCopy=Template.loadUserTemplate("MyBusinessPlan");
 		
 		//verify loaded object and serialized object contain the same content
-		Assert.assertEquals(userVMOSA, userCopy);
+		Assert.assertTrue(userVMOSA.equals(userCopy));
 		
 		//verify changing one does not change the other
 		makeChange(userVMOSA,userCopy);
@@ -82,7 +80,7 @@ public class TemplateTester extends TestCase {
 	 */
 	private void makeChange(Template base,Template copy) {
 		base.getRoot().setCategory("Object");
-		Assert.assertNotSame(base, base); //change one to copy
+		Assert.assertNotSame(base, copy);
 	}
 	
 }
