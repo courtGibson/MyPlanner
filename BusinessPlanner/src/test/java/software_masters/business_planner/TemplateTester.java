@@ -58,23 +58,20 @@ public class TemplateTester extends TestCase {
 		fail("not yet implemented");
 	}
 	
-	
-/* this method is pointless because there is no point in creating a deep copy. plus can copy restrictions make a template
- * copy impossible. */
-//	/**
-//	 * Verifies that the deepCopy of a template is effective.
-//	 */
-//	public void testDeepCopy() {
-//		Template VMOSA=VMOSA_builder.generateTemplate();
-//		Template VMOSA_clone=null;//VMOSA.deepCopy();
-//		
-//		//verify objects have the same content
-//		Assert.assertEquals(VMOSA, VMOSA_clone);
-//		
-//		//verify changing one does not change the other
-//		makeChange(VMOSA,VMOSA_clone);
-//		
-//	}
+	/**
+	 * Verifies that the deepCopy of a template is effective.
+	 */
+	public void testDeepCopy() {
+		Template VMOSA=VMOSA_builder.generateTemplate();
+		Template VMOSA_clone=null;//VMOSA.deepCopy();
+		
+		//verify objects have the same content
+		Assert.assertEquals(VMOSA, VMOSA_clone);
+		
+		//verify changing one does not change the other
+		makeChange(VMOSA,VMOSA_clone);
+		
+	}
 	
 	/**
 	 * 
