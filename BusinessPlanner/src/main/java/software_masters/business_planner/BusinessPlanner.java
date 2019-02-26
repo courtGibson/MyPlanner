@@ -24,20 +24,21 @@ class BusinessPlanner {
 	 * When the user selects a plan template they want, it is loaded into memory and cloned.
 	 * @param filepath of chosen developerTemplate XML file
 	 */
-	public void chooseTemplate(String filepath)
+	public void chooseTemplate(String templateName,String userTemplateName)
 	{
-		developerTemplate = Template.load(filepath);
-		userTemplate = Template.load(filepath);
+		developerTemplate = Template.loadDeveloperTemplate(templateName);
+		userTemplate = Template.loadDeveloperTemplate(templateName);
+		userTemplate.setUserTemplateName(userTemplateName);
 	}
 	
 	/**
 	 * Allows the user to load a previously edited user template from memory.
 	 * @param filepath
 	 */
-	public void loadUserTemplate(String filepath)
+	public void loadUserTemplate(String templateName)
 	{
-		userTemplate = Template.load(filepath);
-		developerTemplate = Template.load(userTemplate.getDeveloperTemplateName()+".dev");
+		userTemplate = Template.loadUserTemplate(templateName);
+		developerTemplate = userTemplate.getDeveloperTemplate();
 	}
 
 	/*methods like this that edit the template should be moved to template. something to consider later. */

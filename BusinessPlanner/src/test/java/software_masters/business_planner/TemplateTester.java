@@ -51,6 +51,14 @@ public class TemplateTester extends TestCase {
 		makeChange(userVMOSA,userCopy);
 	}
 
+	/**
+	 * Verifies template object can return it's affiliated developer template
+	 */
+	public void testGetDeveloperTemplate() {
+		fail("not yet implemented");
+	}
+	
+	
 /* this method is pointless because there is no point in creating a deep copy. plus can copy restrictions make a template
  * copy impossible. */
 //	/**

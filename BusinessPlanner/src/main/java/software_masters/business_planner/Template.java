@@ -124,13 +124,39 @@ public class Template {
 	}
 	
 	/**
+	 * This method returns an instantiation of associated developer template
+	 * @return the developerTemplate associated with this template
+	 */
+	public Template getDeveloperTemplate() {
+		return Template.loadDeveloperTemplate(this.developerTemplateName);
+	}
+	
+	/**
+	 * This method uses load to read in a developer template.
+	 * Hides the file extension.
+	 * @param name of the template
+	 * @return the developerTemplate
+	 */
+	public static Template loadDeveloperTemplate(String name) {
+		return Template.load(name+".dev");
+	}
+	
+	/**
+	 * This method uses load to read in a user template.
+	 * Hides the file extension.
+	 * @param name of the template
+	 * @return the userTemplate
+	 */
+	public static Template loadUserTemplate(String name) {
+		return Template.load(name+".user");
+	}
+	
+	/**
 	 * This method is used to load a design based on a provided filepath
-	 * 
 	 * @param filepath the filepath to the xml file representation of the object 
-	 * 
 	 * @return a template object from memory
 	 */
-	public static Template load(String filepath) {
+	private static Template load(String filepath) {
 			XMLDecoder decoder=null;
 			try {
 				decoder=new XMLDecoder(new BufferedInputStream(new FileInputStream(filepath)));

@@ -134,7 +134,7 @@ public class TemplateSection {
 	/**
 	 * This method adds a child TemplateSection object
 	 * 
-	 * @params index the location of child in arraylist of children
+	 * @param index the location of child in arraylist of children
 	 * @return the child object associated with specified index
 	 */
 	public TemplateSection getChild(int index) {
@@ -151,7 +151,7 @@ public class TemplateSection {
 	/**
 	 * This method adds a content object to section
 	 * 
-	 * @params c1 a content object to be added to list of contents
+	 * @param c1 a content object to be added to list of contents
 	 */
 	public void addContent(Content c1) {
 		this.contents.add(c1);
