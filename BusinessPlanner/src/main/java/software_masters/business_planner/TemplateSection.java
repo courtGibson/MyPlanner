@@ -124,7 +124,7 @@ public class TemplateSection {
 	 */
 	public boolean removeChild(TemplateSection child)
 	{
-		if (!this.canRemove()) {
+		if (child.canRemove()) {
 			this.children.remove(child);
 			return true;
 		}
