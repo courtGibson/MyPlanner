@@ -164,6 +164,36 @@ public class Template {
 			return (Template)decoder.readObject();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Template other = (Template) obj;
+		if (developerTemplateName == null) {
+			if (other.developerTemplateName != null)
+				return false;
+		} else if (!developerTemplateName.equals(other.developerTemplateName))
+			return false;
+		if (root == null) {
+			if (other.root != null)
+				return false;
+		} else if (!root.equals(other.root))
+			return false;
+		if (userTemplateName == null) {
+			if (other.userTemplateName != null)
+				return false;
+		} else if (!userTemplateName.equals(other.userTemplateName))
+			return false;
+		return true;
+	}
+
 }
 
 

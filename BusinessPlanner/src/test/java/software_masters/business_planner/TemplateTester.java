@@ -10,7 +10,7 @@ public class TemplateTester extends TestCase {
 	public void testSaveAndLoadDeveloper() {
 		Template VMOSA=VMOSA_builder.generateTemplate();
 		VMOSA.save();
-		Template VMOSA_clone=null; //Template.load("VMOSA.dev");
+		Template VMOSA_clone=Template.loadDeveloperTemplate("VMOSA");
 		
 		//verify loaded object and serialized object contain the same content
 		Assert.assertEquals(VMOSA, VMOSA_clone);

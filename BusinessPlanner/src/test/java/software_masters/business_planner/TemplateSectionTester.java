@@ -80,8 +80,8 @@ public class TemplateSectionTester extends TestCase {
 		
 		//Tries to clone Objectives
 		TemplateSection ts4 = ts3.deepCopy();
-		//ts4.setParent(ts2);
-		Assert.assertEquals(ts3, ts4);
+		ts4.setParent(ts2);
+		Assert.assertTrue(ts3.equals(ts4));
 		
 		//Makes sure change in one copy doesn't effect change in another copy
 		makeChange(ts3, ts3.deepCopy());
@@ -96,6 +96,6 @@ public class TemplateSectionTester extends TestCase {
 	 */
 	private void makeChange(TemplateSection base,TemplateSection copy) {
 		base.setCategory("Object");
-		Assert.assertNotSame(base, base); //change one to copy
+		Assert.assertNotSame(base, copy);
 	}
 }
