@@ -106,21 +106,21 @@ class BusinessPlanner {
 		return null;
 	}
 
-//	/**
-//	 * Allows user to navigate to parent of the currently accessed template section
-//	 */
-//	public void accessParent()
-//	{
-//		current = current.getParent();
-//	}
-//	
-//	/**
-//	 * Allows user to navigate to the child of the currently accessed template section, given its position in the children array
-//	 * @param index
-//	 */
-//	public void accessChild(int index)
-//	{
-//		current = current.getChildren().get(index);
-//	}
+	/**
+	 * Allows user to navigate to parent of the currently accessed template section
+	 */
+	public void accessParent()
+	{
+		current = current.getParent();
+	}
+	
+	/**
+	 * Allows user to navigate to the child of the currently accessed template section, given its position in the children array
+	 * @param index
+	 */
+	public void accessChild(int index)
+	{
+		current = current.getChildren().get(index);
+	}
 	
 }
