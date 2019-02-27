@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_181" class="java.beans.XMLDecoder">
+ <object class="software_masters.business_planner.Template">
+  <void property="developerTemplateName">
+   <string>OKR</string>
+  </void>
+  <void property="root">
+   <object class="software_masters.business_planner.TemplateSection" id="TemplateSection0">
+    <void property="canCopy">
+     <boolean>false</boolean>
+    </void>
+    <void property="category">
+     <string>Vision</string>
+    </void>
+    <void property="children">
+     <void method="add">
+      <object class="software_masters.business_planner.TemplateSection" id="TemplateSection1">
+       <void property="canCopy">
+        <boolean>false</boolean>
+       </void>
+       <void property="category">
+        <string>Mission</string>
+       </void>
+       <void property="children">
+        <void method="add">
+         <object class="software_masters.business_planner.TemplateSection" id="TemplateSection2">
+          <void property="category">
+           <string>Long Term Goals</string>
+          </void>
+          <void property="children">
+           <void method="add">
+            <object class="software_masters.business_planner.TemplateSection" id="TemplateSection3">
+             <void property="category">
+              <string>Short Term Goals</string>
+             </void>
+             <void property="children">
+              <void method="add">
+               <object class="software_masters.business_planner.TemplateSection" id="TemplateSection4">
+                <void property="category">
+                 <string>Objectives</string>
+                </void>
+                <void property="children">
+                 <void method="add">
+                  <object class="software_masters.business_planner.TemplateSection" id="TemplateSection5">
+                   <void property="category">
+                    <string>Key Results</string>
+                   </void>
+                   <void property="contents">
+                    <void method="add">
+                     <object class="software_masters.business_planner.Text"/>
+                    </void>
+                   </void>
+                   <void property="parent">
+                    <object idref="TemplateSection4"/>
+                   </void>
+                  </object>
+                 </void>
+                </void>
+                <void property="contents">
+                 <void method="add">
+                  <object class="software_masters.business_planner.Text"/>
+                 </void>
+                </void>
+                <void property="parent">
+                 <object idref="TemplateSection3"/>
+                </void>
+               </object>
+              </void>
+             </void>
+             <void property="contents">
+              <void method="add">
+               <object class="software_masters.business_planner.Text"/>
+              </void>
+             </void>
+             <void property="parent">
+              <object idref="TemplateSection2"/>
+             </void>
+            </object>
+           </void>
+          </void>
+          <void property="contents">
+           <void method="add">
+            <object class="software_masters.business_planner.Text"/>
+           </void>
+          </void>
+          <void property="parent">
+           <object idref="TemplateSection1"/>
+          </void>
+         </object>
+        </void>
+       </void>
+       <void property="contents">
+        <void method="add">
+         <object class="software_masters.business_planner.Text"/>
+        </void>
+       </void>
+       <void property="name">
+        <string>Mission</string>
+       </void>
+       <void property="parent">
+        <object idref="TemplateSection0"/>
+       </void>
+      </object>
+     </void>
+    </void>
+    <void property="contents">
+     <void method="add">
+      <object class="software_masters.business_planner.Text"/>
+     </void>
+    </void>
+    <void property="name">
+     <string>Vision</string>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>
