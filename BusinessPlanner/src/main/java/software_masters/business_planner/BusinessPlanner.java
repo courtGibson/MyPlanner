@@ -29,6 +29,7 @@ class BusinessPlanner {
 		developerTemplate = Template.loadDeveloperTemplate(templateName);
 		userTemplate = Template.loadDeveloperTemplate(templateName);
 		userTemplate.setUserTemplateName(userTemplateName);
+		current = userTemplate.getRoot();
 	}
 	
 	/**
@@ -45,9 +46,9 @@ class BusinessPlanner {
 	/**
 	 * Adds a copy of the type of TemplateSection currently accessed by the user. Only works if the section is allowed
 	 * to be copied.
-	 * @return boolean indicating if section was added
+	 * @return TemplateSection that is the head of the new branch
 	 */
-	public boolean addSection()
+	public TemplateSection addBranch()
 	{
 		String currCategory = current.getCategory();
 		
@@ -57,9 +58,9 @@ class BusinessPlanner {
 		if (copy!=null) {
 			current.getParent().addChild(copy);
 			copy.setParent(current);
-			return true;
+			return copy;
 		}
-		return false;
+		return null;
 		
 	}
 	
@@ -87,7 +88,7 @@ class BusinessPlanner {
 	public TemplateSection findTemplateSection(TemplateSection section, String targetCategory)
 	{
 		/*Base case - category found */
-		if(section.getCategory() == targetCategory)
+		if(section.getCategory().equals(targetCategory))
 		{
 			return section;
 		}
@@ -121,6 +122,48 @@ class BusinessPlanner {
 	public void accessChild(int index)
 	{
 		current = current.getChildren().get(index);
+	}
+
+	/**
+	 * @return the userTemplate
+	 */
+	public Template getUserTemplate() {
+		return userTemplate;
+	}
+
+	/**
+	 * @param userTemplate the userTemplate to set
+	 */
+	public void setUserTemplate(Template userTemplate) {
+		this.userTemplate = userTemplate;
+	}
+
+	/**
+	 * @return the developerTemplate
+	 */
+	public Template getDeveloperTemplate() {
+		return developerTemplate;
+	}
+
+	/**
+	 * @param developerTemplate the developerTemplate to set
+	 */
+	public void setDeveloperTemplate(Template developerTemplate) {
+		this.developerTemplate = developerTemplate;
+	}
+
+	/**
+	 * @return the current
+	 */
+	public TemplateSection getCurrent() {
+		return current;
+	}
+
+	/**
+	 * @param current the current to set
+	 */
+	public void setCurrent(TemplateSection current) {
+		this.current = current;
 	}
 	
 }
