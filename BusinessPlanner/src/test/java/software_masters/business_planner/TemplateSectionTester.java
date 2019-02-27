@@ -85,6 +85,20 @@ public class TemplateSectionTester extends TestCase {
 		
 		//Makes sure change in one copy doesn't effect change in another copy
 		makeChange(ts3, ts3.deepCopy());
+		
+		TemplateSection ts5 = new TemplateSection("Vision","Vision", false);
+		TemplateSection ts6 = new TemplateSection("Mission","Mission", true);
+		TemplateSection ts7 = new TemplateSection("Objectives", null, true);
+		
+		ts5.addChild(ts6);
+		ts6.setParent(ts5);
+		ts6.addChild(ts7);
+		ts7.setParent(ts6);
+		
+		//Tries to clone Mission
+		TemplateSection ts8 = ts6.deepCopy();
+		ts6.setParent(ts8);
+		Assert.assertTrue(ts6.equals(ts8));
 	}
 	
 	/**

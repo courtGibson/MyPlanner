@@ -48,28 +48,6 @@ public class TemplateTester extends TestCase {
 		//verify changing one does not change the other
 		makeChange(userVMOSA,userCopy);
 	}
-
-	/**
-	 * Verifies template object can return it's affiliated developer template
-	 */
-	public void testGetDeveloperTemplate() {
-		fail("not yet implemented");
-	}
-	
-	/**
-	 * Verifies that the deepCopy of a template is effective.
-	 */
-	public void testDeepCopy() {
-		Template VMOSA=VMOSA_builder.generateTemplate();
-		Template VMOSA_clone=null;//VMOSA.deepCopy();
-		
-		//verify objects have the same content
-		Assert.assertEquals(VMOSA, VMOSA_clone);
-		
-		//verify changing one does not change the other
-		makeChange(VMOSA,VMOSA_clone);
-		
-	}
 	
 	/**
 	 * 
