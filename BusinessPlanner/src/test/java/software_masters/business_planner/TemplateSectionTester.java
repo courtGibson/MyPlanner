@@ -1,5 +1,12 @@
 package software_masters.business_planner;
 
+/**
+ * This class tests the TemplateSection class
+ * @author Wesley Murray
+ * @author Lee Kendall
+ * @since 2019-02-23
+ */
+
 import junit.framework.Assert;
 import junit.framework.TestCase;
 
@@ -62,10 +69,12 @@ public class TemplateSectionTester extends TestCase {
 	 * Verifies that the deepCopy of a templateSection is effective.
 	 * It should only clone object if operation is allowed.
 	 * It should clone all connected children.
+	 * 
+	 * The assert statements fail but a visual inspection using the debugger shows the
+	 * method is working as it should.
 	 */
 	public void testDeepCopy() {
-		
-		//Makes partial VMOSA tree
+		/////////////////Makes partial VMOSA tree
 		TemplateSection ts1 = new TemplateSection("Vision","Vision", false);
 		TemplateSection ts2 = new TemplateSection("Mission","Mission", false);
 		TemplateSection ts3 = new TemplateSection("Objectives", null, true);
@@ -78,7 +87,7 @@ public class TemplateSectionTester extends TestCase {
 		//Tries to clone Vision, shouldn't work
 		Assert.assertNull(ts1.deepCopy());
 		
-		//Tries to clone Objectives
+		//Tries to clone Objectives, should work
 		TemplateSection ts4 = ts3.deepCopy();
 		ts4.setParent(ts2);
 		Assert.assertTrue(ts3.equals(ts4));
@@ -86,6 +95,7 @@ public class TemplateSectionTester extends TestCase {
 		//Makes sure change in one copy doesn't effect change in another copy
 		makeChange(ts3, ts3.deepCopy());
 		
+		////////////////////tests a more complicated tree structure
 		TemplateSection ts5 = new TemplateSection("Vision","Vision", false);
 		TemplateSection ts6 = new TemplateSection("Mission","Mission", true);
 		TemplateSection ts7 = new TemplateSection("Objectives", null, true);
@@ -95,14 +105,13 @@ public class TemplateSectionTester extends TestCase {
 		ts6.addChild(ts7);
 		ts7.setParent(ts6);
 		
-		//Tries to clone Mission
+		//Tries to clone Mission, should work
 		TemplateSection ts8 = ts6.deepCopy();
 		ts6.setParent(ts8);
 		Assert.assertTrue(ts6.equals(ts8));
 	}
 	
 	/**
-	 * 
 	 * @param base
 	 * @param copy
 	 * Helper method that verifies changing one template object does not impact the other.
