@@ -1,7 +1,8 @@
 package software_masters.business_planner;
 
 /**
- * This interface represents any content that may be added to a business plan section.
+ * This interface represents any content that may be added to a business plan
+ * section.
  * 
  * 
  * @author Wesley Murray
@@ -12,11 +13,13 @@ package software_masters.business_planner;
  * 
  */
 
-public interface Content {
+public interface Content
+{
 	/**
-	 * this method visualizes content 
+	 * this method visualizes content
 	 */
 	public void display();
+
 	/**
 	 * 
 	 * @return copy of the content object
