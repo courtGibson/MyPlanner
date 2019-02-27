@@ -5,7 +5,7 @@ import junit.framework.TestCase;
 
 public class TemplateTester extends TestCase {
 	/**
-	 * Verifies the develop template object is properly serialized and can be read in.
+	 * Verifies the developer template object is properly serialized and can be read in.
 	 */
 	public void testSaveAndLoadDeveloper() {
 		Template VMOSA=VMOSA_builder.generateTemplate();
@@ -24,9 +24,6 @@ public class TemplateTester extends TestCase {
 	 * can be significantly more complicated that the developer template.
 	 */
 	public void testSaveAndLoadUser() {
-		//developer template
-		Template VMOSA=VMOSA_builder.generateTemplate();
-		
 		//user template
 		Template userVMOSA=VMOSA_builder.generateTemplate();
 		userVMOSA.setUserTemplateName("MyBusinessPlan");
@@ -50,7 +47,6 @@ public class TemplateTester extends TestCase {
 	}
 	
 	/**
-	 * 
 	 * @param base
 	 * @param copy
 	 * Helper method that verifies changing one template object does not impact the other.

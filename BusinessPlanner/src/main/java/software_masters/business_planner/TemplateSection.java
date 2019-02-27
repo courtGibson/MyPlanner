@@ -261,8 +261,10 @@ public class TemplateSection {
 		if (parent == null) {
 			if (other.parent != null)
 				return false;
-		} else if (!parent.equals(other.parent))
-			return false;
+		} 
+//		
+//		else if (!parent.equals(other.parent))
+//			return false;
 		return true;
 	}
 	

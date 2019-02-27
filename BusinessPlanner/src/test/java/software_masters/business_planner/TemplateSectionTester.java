@@ -69,9 +69,6 @@ public class TemplateSectionTester extends TestCase {
 	 * Verifies that the deepCopy of a templateSection is effective.
 	 * It should only clone object if operation is allowed.
 	 * It should clone all connected children.
-	 * 
-	 * The assert statements fail but a visual inspection using the debugger shows the
-	 * method is working as it should.
 	 */
 	public void testDeepCopy() {
 		/////////////////Makes partial VMOSA tree
