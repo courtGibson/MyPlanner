@@ -10,14 +10,9 @@ import java.io.FileOutputStream;
 
 /**
  * This class can be both a representation of a business plan or a business plan outline.
- * 
- * 
  * @author Wesley Murray
  * @author Lee Kendall
- * 
  * @since 2019-02-23
- * 
- * 
  */
 
 public class Template {

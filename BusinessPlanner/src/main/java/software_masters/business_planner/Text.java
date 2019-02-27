@@ -1,16 +1,10 @@
 package software_masters.business_planner;
-import java.util.Scanner;
 
 /**
  * This class represents a content section that is all text
- * 
- * 
  * @author Wesley Murray
  * @author Lee Kendall
- * 
  * @since 2019-02-23
- * 
- * 
  */
 
 public class Text implements Content {
@@ -35,9 +29,6 @@ public class Text implements Content {
 	 * this method demonstrates how a user might interact with the content of TemplateSection
 	 */
 	public void display() {
-//		Scanner input = new Scanner(System.in);
-//		setTextString(input.next());
-//		input.close();
 		setTextString("display");
 		System.out.println(textString);
 	}

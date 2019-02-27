@@ -22,7 +22,8 @@ class BusinessPlanner {
 	/**
 	 * Sets developerTemplate to the chosen XML file, clones developerTemplate to make a userTemplate object.
 	 * When the user selects a plan template they want, it is loaded into memory and cloned.
-	 * @param filepath of chosen developerTemplate XML file
+	 * @param templateName of chosen developerTemplate XML file
+	 * @param userTemplateName name of userTemplate 
 	 */
 	public void chooseTemplate(String templateName,String userTemplateName)
 	{
@@ -34,7 +35,7 @@ class BusinessPlanner {
 	
 	/**
 	 * Allows the user to load a previously edited user template from memory.
-	 * @param filepath
+	 * @param templateName name of user template to load
 	 */
 	public void loadUserTemplate(String templateName)
 	{
@@ -65,9 +66,8 @@ class BusinessPlanner {
 		
 	}
 	
-	/*methods like this that edit the template should be moved to template. something to consider later */
 	/**
-	 * Removes the currently access section if allowed, sets current section to parent of removed section.
+	 * Removes the currently accessed section if allowed, sets current section to parent of removed section.
 	 * @return boolean indicating if section actually removed
 	 */
 	public boolean removeSection()
@@ -79,12 +79,11 @@ class BusinessPlanner {
 		return false;
 	}
 	
-	/*Consider using a hash map in template with category and name as the key to make node access easy. */
 	/**
 	 * Recursively finds a templateSection with a given category.
 	 * @param section
 	 * @param targetCategory
-	 * @return TemplateSection of developerTemplate which  user wants to add
+	 * @return TemplateSection of developerTemplate which user wants to add
 	 */
 	public TemplateSection findTemplateSection(TemplateSection section, String targetCategory)
 	{

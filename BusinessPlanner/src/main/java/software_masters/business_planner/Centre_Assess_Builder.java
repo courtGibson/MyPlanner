@@ -2,17 +2,10 @@ package software_masters.business_planner;
 
 /**
  * This class builds a Centre Assessment developer template and saves it to XML.
- * 
- * 
  * @author Wesley Murray
  * @author Lee Kendall
- * 
  * @since 2019-02-25
- * 
- * 
  */
-
-/* These template builders could implement a super class since some of it is the same. at the same time these are throw away classes once run. */
 public class Centre_Assess_Builder {
 
 	private static TemplateSection makeSection(String category, String name, boolean canCopy)

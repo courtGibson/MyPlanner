@@ -77,7 +77,6 @@ public class TemplateSection {
 	/**
 	 * @param category the category to set
 	 */
-	/* This method can be abused. Maybe this should not be allowed */
 	public void setCategory(String category) {
 		this.category = category;
 	}
@@ -262,9 +261,6 @@ public class TemplateSection {
 			if (other.parent != null)
 				return false;
 		} 
-//		
-//		else if (!parent.equals(other.parent))
-//			return false;
 		return true;
 	}
 	
