@@ -40,6 +40,7 @@ class BusinessPlanner {
 	{
 		userTemplate = Template.loadUserTemplate(templateName);
 		developerTemplate = userTemplate.getDeveloperTemplate();
+		current = userTemplate.getRoot();
 	}
 
 	/*methods like this that edit the template should be moved to template. something to consider later. */

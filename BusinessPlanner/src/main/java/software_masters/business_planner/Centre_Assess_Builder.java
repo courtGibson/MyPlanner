@@ -1,6 +1,3 @@
-/**
- * 
- */
 package software_masters.business_planner;
 
 /**
@@ -49,7 +46,7 @@ public class Centre_Assess_Builder {
 		return new Template("Centre_Assessment", null, collegeMission);
 	}
 	public static void main(String[] args) {
-		System.out.println("Start");
+		System.out.println("Start Centre Assess Builder");
 		Template Centre_Assessment=generateTemplate();
 		Centre_Assessment.save();
 		System.out.println("end");
