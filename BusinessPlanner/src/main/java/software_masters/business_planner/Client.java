@@ -22,6 +22,7 @@ public class Client
 	boolean admin;
 	Server server;
 	Template plan;
+	BusinessPlanner bp;
 	
 	/**
 	 * @param name
@@ -115,9 +116,20 @@ public class Client
 	/**
 	 * @param t
 	 */
-	public void makePlan(Template t)
+	public void makePlan(String templateName, String newPlanName)
 	{
-		//Template newPlan = 
+		if (admin == true && (templateName.equals("VMOSA") || templateName.equals("Centre") || templateName.equals("OKR")))
+		{
+			bp.chooseTemplate(templateName, newPlanName);
+			Template newPlan = bp.getUserTemplate();
+			Department d = server.dept.get(departmentName);
+			d.addPlan(newPlan);
+		}
+		else
+		{
+			throw new IllegalArgumentException("This template does not exist.");
+		}
+	
 	}
 	
 	/**
