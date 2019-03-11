@@ -13,6 +13,6 @@ import java.rmi.RemoteException;
 
 public interface ServerInterface extends Remote 
 {
-    String sayHello() throws RemoteException;
+    //String sayHello() throws RemoteException;
 }
 
