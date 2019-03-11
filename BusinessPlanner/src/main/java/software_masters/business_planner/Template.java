@@ -22,6 +22,7 @@ public class Template
 	private String developerTemplateName;
 	private String userTemplateName;
 	private TemplateSection root;
+	public boolean editable;
 
 	/**
 	 * This constructor creates a default object for use by XML encoder
@@ -43,6 +44,19 @@ public class Template
 		this.developerTemplateName = developerTemplateName;
 		this.userTemplateName = userTemplateName;
 		this.root = root;
+		this.editable = false;
+	}
+
+	public boolean isEditable()
+	{
+	
+		return editable;
+	}
+
+	public void setEditable(boolean editable)
+	{
+	
+		this.editable = editable;
 	}
 
 	/**
