@@ -107,7 +107,8 @@ public class Server implements ServerInterface
 			registry.bind("Sprint 2", stub);
 
 			System.err.println("Server ready");
-		} catch (Exception e)
+		} 
+		catch (Exception e)
 		{
 			System.err.println("Server exception: " + e.toString());
 			e.printStackTrace();
