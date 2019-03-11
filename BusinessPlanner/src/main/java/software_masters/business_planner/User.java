@@ -16,11 +16,11 @@ public class User
 	boolean admin;
 	
 	/**
-	 * @param name
-	 * @param username
-	 * @param password
-	 * @param deptName
-	 * @param admin
+	 * @param name name of the user
+	 * @param username username of the user
+	 * @param password password of the user
+	 * @param deptName department name of the user
+	 * @param admin is the user an admin
 	 */
 	public User(String name, String username, String password, String deptName, boolean admin)
 	{
@@ -30,9 +30,15 @@ public class User
 		this.deptName = deptName;
 		this.admin = admin;
 	}
+	
+	// blank constructor of XML
+	public User()
+	{
+		this("name", "name.name", "namePass", "dept", false);
+	}
 
 	/**
-	 * @return the name
+	 * @return the name of the user
 	 */
 	public String getName()
 	{
@@ -40,7 +46,7 @@ public class User
 	}
 
 	/**
-	 * @return the username
+	 * @return the username of the user
 	 */
 	public String getUsername()
 	{
@@ -48,7 +54,7 @@ public class User
 	}
 
 	/**
-	 * @return the password
+	 * @return the password of the user
 	 */
 	public String getPassword()
 	{
@@ -56,7 +62,7 @@ public class User
 	}
 
 	/**
-	 * @return the deptName
+	 * @return the deptName of the user
 	 */
 	public String getDeptName()
 	{
@@ -64,7 +70,7 @@ public class User
 	}
 
 	/**
-	 * @return the admin
+	 * @return the admin value of the user
 	 */
 	public boolean isAdmin()
 	{
@@ -72,7 +78,7 @@ public class User
 	}
 
 	/**
-	 * @param admin the admin to set
+	 * @param admin the admin value to set
 	 */
 	public void setAdmin(boolean admin)
 	{

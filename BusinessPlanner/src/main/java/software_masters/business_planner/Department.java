@@ -15,13 +15,17 @@ public class Department
 	BusinessPlanner bp;
 	
 	/**
-	 * @param deptName
+	 * @param deptName name of the department
 	 */
 	Department(String deptName)
 	{
 		this.departmentName = deptName;
+		this.admins = new ArrayList<User>();
+		this.users = new ArrayList<User>();
+		this.plans = new ArrayList<Template>();
 	}
 	
+	// blank constructor for XML
 	Department()
 	{
 		this("hello");
@@ -29,7 +33,7 @@ public class Department
 
 	
 	/**
-	 * @param user
+	 * @param user to add to department's user list
 	 */
 	public void addUser(User user)
 	{
@@ -37,8 +41,19 @@ public class Department
 	}
 	
 	/**
-	 * @param planName
-	 * @return Template
+	 * @param user to add to department's user list
+	 */
+	public void addAdmin(User user)
+	{
+		admins.add(user);
+	}
+	
+	/**
+	 * @param planName name of a plan the user wants
+	 * @return Template plan with the given plan name
+	 * 
+	 * 
+	 * If plan name does not match any in the list, exception is thrown
 	 */
 	public Template getPlan(String planName) 
 	{
@@ -57,12 +72,11 @@ public class Department
 		}
 		
 		throw new IllegalArgumentException("No plan exists with that name");		
-		
-		
+
 	}
 	
 	/**
-	 * @param plan
+	 * @param plan to add to list of plans
 	 */
 	public void addPlan(Template plan)
 	{
@@ -72,7 +86,9 @@ public class Department
 	
 	
 	/**
-	 * @param plan
+	 * @param plan to update in list after changes are made
+	 * 
+	 * If plan does not exist, exception is thrown
 	 */
 	public void updatePlan(Template plan)
 	{
@@ -96,7 +112,7 @@ public class Department
 	
 	
 	/**
-	 * @return
+	 * @return String department name
 	 */
 	public String getDeptName()
 	{
@@ -104,7 +120,7 @@ public class Department
 	}
 
 	/**
-	 * @return
+	 * @return User list of admin users
 	 */
 	public ArrayList<User> getAdmins()
 	{
@@ -112,7 +128,7 @@ public class Department
 	}
 
 	/**
-	 * @return
+	 * @return User list of users
 	 */
 	public ArrayList<User> getUsers()
 	{
@@ -120,7 +136,7 @@ public class Department
 	}
 
 	/**
-	 * @return
+	 * @return Template list of plans for the department
 	 */
 	public ArrayList<Template> getPlans()
 	{
@@ -128,7 +144,9 @@ public class Department
 	}
 
 	/**
-	 * @return
+	 * @return BusinessPlanner business planner object
+	 * 
+	 * ??????? NEED THIS ??????
 	 */
 	public BusinessPlanner getBp()
 	{
