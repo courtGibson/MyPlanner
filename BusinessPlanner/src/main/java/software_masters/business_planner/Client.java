@@ -29,7 +29,8 @@ public class Client
 			ServerInterface stub = (ServerInterface) registry.lookup("Hello");
 			//String response = stub.sayHello();
 			//System.out.println("response: " + response);
-		} catch (Exception e)
+		} 
+		catch (Exception e)
 		{
 			System.err.println("Client exception: " + e.toString());
 			e.printStackTrace();
