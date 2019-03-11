@@ -23,6 +23,11 @@ public class Client
 	Server server;
 	Template plan;
 	
+	/**
+	 * @param name
+	 * @param username
+	 * @param password
+	 */
 	private Client(String name, String username, String password)
 	{
 		this.name = name;
@@ -35,6 +40,13 @@ public class Client
 		
 	}
 	
+	/**
+	 * @param name
+	 * @param newUsername
+	 * @param newPassword
+	 * @param deptName
+	 * @param admin
+	 */
 	private Client(String name, String newUsername, String newPassword, String deptName, boolean admin)
 	{
 		this.name = name;
@@ -47,11 +59,22 @@ public class Client
 		
 	}
 
+	/**
+	 * @param name
+	 * @param newUsername
+	 * @param newPassword
+	 * @param deptName
+	 * @param admin
+	 */
 	public void addUser(String name, String newUsername, String newPassword, String deptName, boolean admin)
 	{
 		server.addUsers(name, newUsername, newPassword, deptName, admin);
 	}
 	
+	/**
+	 * @param enteredUsername
+	 * @param enteredPassword
+	 */
 	public void adminLogin(String enteredUsername, String enteredPassword)
 	{
 		String[] returnedInfo = server.adminLogin(enteredUsername, enteredPassword);
@@ -59,6 +82,10 @@ public class Client
 		this.admin = Boolean.valueOf(returnedInfo[1]);
 	}
 	
+	/**
+	 * @param enteredUsername
+	 * @param enteredPassword
+	 */
 	public void userLogin(String enteredUsername, String enteredPassword)
 	{
 		String returnedInfo = server.userLogin(enteredUsername, enteredPassword);
@@ -66,11 +93,18 @@ public class Client
 		
 	}
 
+	/**
+	 * @param planName
+	 * @return
+	 */
 	public Template getPlan(String planName) 
 	{
 		return server.getPlan(planName, departmentName);
 	}
 
+	/**
+	 * @return
+	 */
 	public ArrayList<Template> getDeptPlans()
 	{
 		Department currentDepartment = server.dept.get(departmentName);
@@ -78,16 +112,25 @@ public class Client
 	}
 	
 	//Need help figuring out how to make a new Template with their code
+	/**
+	 * @param t
+	 */
 	public void makePlan(Template t)
 	{
 		//Template newPlan = 
 	}
 	
+	/**
+	 * 
+	 */
 	public void savePlan()
 	{
 		server.updatePlan(plan, departmentName);
 	}
 
+	/**
+	 * @param editable
+	 */
 	public void changeEditStatus(boolean editable)
 	{
 		plan.setEditable(editable);
@@ -95,22 +138,37 @@ public class Client
 	}
 	
 	//Not sure if this will add the section in the right spot or not
+	//    //s is node to be added to
+	/**
+	 * @param s
+	 */
 	public void editAdd(TemplateSection s)
 	{
-		plan.getRoot().addChild(s);
+		///////// need to figure out how to build branches
+		s.addChild(s);
 		savePlan();
 		
 	}
 
 	//Same here
+	//   // maybe fixed it??
+	/**
+	 * @param s
+	 */
 	public void editRemove(TemplateSection s)
 	{
-		plan.getRoot().removeChild(s);
+		TemplateSection parent = s.getParent();
+		parent.removeChild(s);
 		savePlan();
 		
 	}
 	
 	//Not sure how to access past the root again
+	//   //should be fine since adding directly to the "node"
+	/**
+	 * @param s
+	 * @param content
+	 */
 	public void editContent(TemplateSection s, String content)
 	{
 		ArrayList<String> contents = new ArrayList<String>();
@@ -120,6 +178,9 @@ public class Client
 	
 	
 	
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args)
 	{
 
