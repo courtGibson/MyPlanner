@@ -20,7 +20,7 @@ public class Client
 	String password;
 	String departmentName;
 	boolean admin;
-	Server server;
+	static ServerInterface server;
 	Template plan;
 	
 	/**
@@ -245,9 +245,9 @@ public class Client
 		try
 		{
 			Registry registry = LocateRegistry.getRegistry(host);
-			ServerInterface stub = (ServerInterface) registry.lookup("Hello");
-			//String response = stub.sayHello();
-			//System.out.println("response: " + response);
+			server = (ServerInterface) registry.lookup("Server");
+			String response = server.sayHello();
+			System.out.println("response: " + response);
 		} 
 		catch (Exception e)
 		{

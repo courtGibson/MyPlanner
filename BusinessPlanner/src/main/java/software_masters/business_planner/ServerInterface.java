@@ -26,5 +26,7 @@ public interface ServerInterface extends Remote
 	public Template getPlan(String planName, String deptName) throws RemoteException;
 
 	public void updatePlan(Template plan, String deptName) throws RemoteException;
+	
+	String sayHello() throws RemoteException;
 }
 

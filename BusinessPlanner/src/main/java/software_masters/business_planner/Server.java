@@ -115,4 +115,10 @@ public class Server implements ServerInterface
 			e.printStackTrace();
 		}
 	}
+
+	public String sayHello() throws RemoteException
+	{
+		
+		return "Hello";
+	}
 }
