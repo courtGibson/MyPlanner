@@ -3,6 +3,7 @@
  */
 package software_masters.business_planner;
 
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class Client
 	String password;
 	String departmentName;
 	boolean admin;
-	static ServerInterface server;
+	static Server server;
 	Template plan;
 	
 	/**
@@ -35,7 +36,6 @@ public class Client
 		this.password = password;
 		this.departmentName = null;
 		this.admin = false;
-		this.server = server;
 		this.plan = null; 
 		
 	}
@@ -48,7 +48,7 @@ public class Client
 	 * @param deptName
 	 * @param admin
 	 */
-	public void addUser(String name, String newUsername, String newPassword, String deptName, boolean admin)
+	public void addUser(String name, String newUsername, String newPassword, String deptName, boolean admin) throws RemoteException
 	{
 		if(admin == true) 
 		{
@@ -64,7 +64,7 @@ public class Client
 	 * @param enteredUsername
 	 * @param enteredPassword
 	 */
-	public void adminLogin(String enteredUsername, String enteredPassword)
+	public void adminLogin(String enteredUsername, String enteredPassword) throws RemoteException
 	{
 		String[] returnedInfo = server.adminLogin(enteredUsername, enteredPassword);
 		this.departmentName = returnedInfo[0];
@@ -75,7 +75,7 @@ public class Client
 	 * @param enteredUsername
 	 * @param enteredPassword
 	 */
-	public void userLogin(String enteredUsername, String enteredPassword)
+	public void userLogin(String enteredUsername, String enteredPassword) throws RemoteException
 	{
 		String returnedInfo = server.userLogin(enteredUsername, enteredPassword);
 		this.departmentName = returnedInfo;
@@ -86,7 +86,7 @@ public class Client
 	 * @param planName
 	 * @return
 	 */
-	public Template getPlan(String planName) 
+	public Template getPlan(String planName) throws RemoteException
 	{
 		return server.getPlan(planName, departmentName);
 	}
@@ -94,7 +94,7 @@ public class Client
 	/**
 	 * @return
 	 */
-	public ArrayList<Template> getDeptPlans()
+	public ArrayList<Template> getDeptPlans() throws RemoteException
 	{
 		Department currentDepartment = server.dept.get(departmentName);
 		return currentDepartment.getPlans();
@@ -127,7 +127,7 @@ public class Client
 	/**
 	 * 
 	 */
-	public void savePlan()
+	public void savePlan() throws RemoteException
 	{
 		if(admin == true || plan.isEditable() == true) 
 		{
@@ -143,7 +143,7 @@ public class Client
 	/**
 	 * @param editable
 	 */
-	public void changeEditStatus(boolean editable)
+	public void changeEditStatus(boolean editable) throws RemoteException
 	{
 		if(admin == true) 
 		{
@@ -162,7 +162,7 @@ public class Client
 	/**
 	 * @param s
 	 */
-	public void editAdd(TemplateSection s)
+	public void editAdd(TemplateSection s) throws RemoteException
 	{
 		if(admin == true || plan.isEditable() == true) 
 		{
@@ -180,7 +180,7 @@ public class Client
 	/**
 	 * @param s
 	 */
-	public void editRemove(TemplateSection s)
+	public void editRemove(TemplateSection s) throws RemoteException
 	{
 		if(admin == true || plan.isEditable() == true) 
 		{
@@ -202,7 +202,7 @@ public class Client
 	 * @param s
 	 * @param content
 	 */
-	public void editAddContent(TemplateSection s, Content content)
+	public void editAddContent(TemplateSection s, Content content) throws RemoteException
 	{
 		if(admin == true || plan.isEditable() == true) 
 		{
@@ -217,7 +217,7 @@ public class Client
 		}
 	}
 	
-	public void editSetContent(TemplateSection s, ArrayList<Content> contents)
+	public void editSetContent(TemplateSection s, ArrayList<Content> contents) throws RemoteException
 	{		
 		if(admin == true || plan.isEditable() == true) 
 		{
@@ -245,7 +245,7 @@ public class Client
 		try
 		{
 			Registry registry = LocateRegistry.getRegistry(host);
-			server = (ServerInterface) registry.lookup("Server");
+			server = (Server) registry.lookup("Server");
 			String response = server.sayHello();
 			System.out.println("response: " + response);
 		} 

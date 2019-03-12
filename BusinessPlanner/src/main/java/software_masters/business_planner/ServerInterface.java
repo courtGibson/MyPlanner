@@ -8,6 +8,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Hashtable;
 /**
  * @author Courtney
  *
@@ -17,6 +18,11 @@ import java.rmi.server.UnicastRemoteObject;
 public interface ServerInterface extends Remote 
 {
 
+	Hashtable<String, User> users = new Hashtable<String, User>();
+	Hashtable<String, User> admins = new Hashtable<String, User>();
+	Hashtable<String, Department> dept = new Hashtable<String, Department>();
+	BusinessPlanner bp = new BusinessPlanner();
+	
 	public void addUsers(String name, String newUserName, String newPassword, String deptName, boolean admin) throws RemoteException;
 
 	public String[] adminLogin(String username, String password) throws RemoteException;
