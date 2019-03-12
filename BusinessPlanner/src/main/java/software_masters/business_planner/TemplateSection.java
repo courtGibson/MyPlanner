@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class TemplateSection implements Serializable
 {
 
-	private String category;
+	private String category; 
 	private String name;
 
 	private TemplateSection parent;

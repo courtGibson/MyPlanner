@@ -14,7 +14,7 @@ import java.io.Serializable;
  * 
  */
 
-class BusinessPlanner implements Serializable
+class BusinessPlanner implements Serializable 
 {
 
 	private Template userTemplate;

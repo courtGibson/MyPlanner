@@ -18,7 +18,7 @@ import java.io.Serializable;
  * These template builders could implement a super class since some of it is the
  * same. at the same time these are throw away classes once run.
  */
-public class OKR implements Serializable
+public class OKR implements Serializable 
 {
 
 	private static TemplateSection makeSection(String category, String name, boolean canCopy)

@@ -19,7 +19,7 @@ import java.io.Serializable;
  */
 
 public class Template implements Serializable
-{
+{ 
 	private String developerTemplateName;
 	private String userTemplateName;
 	private TemplateSection root;

@@ -1,6 +1,6 @@
 package software_masters.business_planner;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 
 /**
  * This class builds a Centre Assessment developer template and saves it to XML.

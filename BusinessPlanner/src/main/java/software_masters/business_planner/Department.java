@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author Courtney
  *
  */
-public class Department implements Serializable
+public class Department implements Serializable 
 {
 	String departmentName;
 	ArrayList<User> admins;
