@@ -59,7 +59,7 @@ public interface ServerInterface extends Remote
 	 */
 	public void updatePlan(Template plan, String deptName) throws RemoteException;
 	
-	public void addDept(String deptName);
+	public void addDept(String deptName) throws RemoteException;
 	
 	/**
 	 * @return
