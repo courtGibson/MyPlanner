@@ -17,11 +17,6 @@ import java.util.Hashtable;
 
 public interface ServerInterface extends Remote 
 {
-
-	Hashtable<String, User> users = new Hashtable<String, User>();
-	Hashtable<String, User> admins = new Hashtable<String, User>();
-	Hashtable<String, Department> dept = new Hashtable<String, Department>();
-	BusinessPlanner bp = new BusinessPlanner();
 	
 	public void addUsers(String name, String newUserName, String newPassword, String deptName, boolean admin) throws RemoteException;
 

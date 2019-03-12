@@ -21,7 +21,7 @@ public class Server implements ServerInterface
 	Hashtable<String, User> users = new Hashtable<String, User>();
 	Hashtable<String, User> admins = new Hashtable<String, User>();
 	Hashtable<String, Department> dept = new Hashtable<String, Department>();
-	BusinessPlanner bp;
+	BusinessPlanner bp = new BusinessPlanner();
 	
 	public Server()
 	{
@@ -102,11 +102,11 @@ public class Server implements ServerInterface
 		try
 		{
 			Server obj = new Server();
-			ServerInterface stub = (ServerInterface) UnicastRemoteObject.exportObject(obj, 0);
+			ServerInterface server = (ServerInterface) UnicastRemoteObject.exportObject(obj, 0);
 
 			// Bind the remote object's stub in the registry
 			Registry registry = LocateRegistry.getRegistry();
-			registry.bind("Sprint 2", stub);
+			registry.bind("Sprint 2", server);
 
 			System.err.println("Server ready");
 		} 
