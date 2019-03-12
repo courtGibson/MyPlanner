@@ -17,14 +17,14 @@ import java.rmi.server.UnicastRemoteObject;
 public interface ServerInterface extends Remote 
 {
 
-	public void addUsers(String name, String newUserName, String newPassword, String deptName, boolean admin);
+	public void addUsers(String name, String newUserName, String newPassword, String deptName, boolean admin) throws RemoteException;
 
-	public String[] adminLogin(String username, String password);
+	public String[] adminLogin(String username, String password) throws RemoteException;
 
-	public String userLogin(String username, String password);
+	public String userLogin(String username, String password) throws RemoteException;
 
-	public Template getPlan(String planName, String deptName);
+	public Template getPlan(String planName, String deptName) throws RemoteException;
 
-	public void updatePlan(Template plan, String deptName);
+	public void updatePlan(Template plan, String deptName) throws RemoteException;
 }
 
