@@ -27,7 +27,7 @@ public class ClientTest
 	}
 
 	@Test
-	public void test() throws RemoteException, NotBoundException
+	public static void test() throws RemoteException, NotBoundException
 	{
 		Client client = new Client("Steve", "Steve.user", "Steve.pass", serverProxy);
 		client.addDept("Biology");
@@ -44,6 +44,12 @@ public class ClientTest
 		  e.getMessage();
 		}*/
 		
+	}
+	
+	public static void main(String[] args) throws Exception
+	{
+		setUpBeforeClass();
+		test();
 	}
 
 }

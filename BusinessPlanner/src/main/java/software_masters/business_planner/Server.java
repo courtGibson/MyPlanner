@@ -42,7 +42,7 @@ public class Server implements ServerInterface
 	public void addUsers(String name, String newUserName, String newPassword, String deptName, boolean admin)
 	{
 		User u = new User(name, newUserName, newPassword, deptName, admin);
-		Department d = dept.get("deptName");
+		Department d = dept.get(deptName);
 		
 		if (admin == true)
 		{
@@ -147,6 +147,7 @@ public class Server implements ServerInterface
 	{
 		Department d = new Department(deptName);
 		dept.put(deptName, d);
+		
 	}
 
 	/**
