@@ -1,5 +1,7 @@
 package software_masters.business_planner;
 
+import java.io.Serializable;
+
 /**
  * This interface represents any content that may be added to a business plan
  * section.

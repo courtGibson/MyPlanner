@@ -1,5 +1,7 @@
 package software_masters.business_planner;
 
+import java.io.Serializable;
+
 /**
  * This class builds a Centre Assessment developer template and saves it to XML.
  * 
@@ -7,7 +9,7 @@ package software_masters.business_planner;
  * @author Lee Kendall
  * @since 2019-02-25
  */
-public class Centre_Assess_Builder
+public class Centre_Assess_Builder implements Serializable
 {
 
 	private static TemplateSection makeSection(String category, String name, boolean canCopy)

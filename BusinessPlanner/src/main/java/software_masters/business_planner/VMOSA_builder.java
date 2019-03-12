@@ -1,5 +1,7 @@
 package software_masters.business_planner;
 
+import java.io.Serializable;
+
 /**
  * This class builds a VMOSA developer template and saves it to XML.
  * 
@@ -16,7 +18,7 @@ package software_masters.business_planner;
  * These template builders could implement a super class since some of it is the
  * same. at the same time these are throw away classes once run.
  */
-public class VMOSA_builder
+public class VMOSA_builder implements Serializable
 {
 
 	private static TemplateSection makeSection(String category, String name, boolean canCopy)

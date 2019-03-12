@@ -7,6 +7,7 @@ import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.Serializable;
 
 /**
  * This class can be both a representation of a business plan or a business plan
@@ -17,7 +18,7 @@ import java.io.FileOutputStream;
  * @since 2019-02-23
  */
 
-public class Template
+public class Template implements Serializable
 {
 	private String developerTemplateName;
 	private String userTemplateName;

@@ -1,5 +1,7 @@
 package software_masters.business_planner;
 
+import java.io.Serializable;
+
 /**
  * This class represents the data in a given business plan section.
  * 
@@ -14,7 +16,7 @@ package software_masters.business_planner;
 
 import java.util.ArrayList;
 
-public class TemplateSection
+public class TemplateSection implements Serializable
 {
 
 	private String category;

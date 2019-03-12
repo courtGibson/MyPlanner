@@ -3,11 +3,13 @@
  */
 package software_masters.business_planner;
 
+import java.io.Serializable;
+
 /**
  * @author Courtney
  *
  */
-public class User
+public class User implements Serializable
 {
 	String name;
 	String username;

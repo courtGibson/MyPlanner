@@ -1,5 +1,7 @@
 package software_masters.business_planner;
 
+import java.io.Serializable;
+
 /**
  * This class handles user interaction with this application.
  * 
@@ -12,7 +14,7 @@ package software_masters.business_planner;
  * 
  */
 
-class BusinessPlanner
+class BusinessPlanner implements Serializable
 {
 
 	private Template userTemplate;

@@ -1,12 +1,13 @@
 package software_masters.business_planner;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * @author Courtney
  *
  */
-public class Department
+public class Department implements Serializable
 {
 	String departmentName;
 	ArrayList<User> admins;
