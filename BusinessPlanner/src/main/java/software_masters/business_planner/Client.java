@@ -22,7 +22,6 @@ public class Client
 	boolean admin;
 	Server server;
 	Template plan;
-	BusinessPlanner bp;
 	
 	/**
 	 * @param name
@@ -120,8 +119,8 @@ public class Client
 	{
 		if (admin == true && (templateName.equals("VMOSA") || templateName.equals("Centre") || templateName.equals("OKR")))
 		{
-			bp.chooseTemplate(templateName, newPlanName);
-			Template newPlan = bp.getUserTemplate();
+			server.bp.chooseTemplate(templateName, newPlanName);
+			Template newPlan = server.bp.getUserTemplate();
 			Department d = server.dept.get(departmentName);
 			d.addPlan(newPlan);
 		}
@@ -157,7 +156,9 @@ public class Client
 	public void editAdd(TemplateSection s)
 	{
 		///////// need to figure out how to build branches
-		s.addChild(s);
+		server.bp.setUserTemplate(plan);
+		server.bp.setCurrent(s);
+		server.bp.addBranch();
 		savePlan();
 		
 	}
@@ -169,8 +170,9 @@ public class Client
 	 */
 	public void editRemove(TemplateSection s)
 	{
-		TemplateSection parent = s.getParent();
-		parent.removeChild(s);
+		server.bp.setUserTemplate(plan);
+		server.bp.setCurrent(s);
+		server.bp.removeSection();
 		savePlan();
 		
 	}
@@ -181,11 +183,22 @@ public class Client
 	 * @param s
 	 * @param content
 	 */
-	public void editContent(TemplateSection s, String content)
+	public void editAddContent(TemplateSection s, Content content)
 	{
-		ArrayList<String> contents = new ArrayList<String>();
-		contents.add(content);
-		//plan.getRoot().setContents(contents);
+		server.bp.setUserTemplate(plan);
+		server.bp.setCurrent(s);
+		
+		server.bp.getCurrent().addContent(content);
+		savePlan();
+	}
+	
+	public void editSetContent(TemplateSection s, ArrayList<Content> contents)
+	{
+		server.bp.setUserTemplate(plan);
+		server.bp.setCurrent(s);
+		
+		server.bp.getCurrent().setContents(contents);
+		savePlan();
 	}
 	
 	
@@ -217,11 +230,6 @@ public class Client
 		return name;
 	}
 
-	public void setName(String name)
-	{
-	
-		this.name = name;
-	}
 
 	public String getUsername()
 	{
@@ -229,11 +237,6 @@ public class Client
 		return username;
 	}
 
-	public void setUsername(String username)
-	{
-	
-		this.username = username;
-	}
 
 	public String getPassword()
 	{
@@ -241,11 +244,6 @@ public class Client
 		return password;
 	}
 
-	public void setPassword(String password)
-	{
-	
-		this.password = password;
-	}
 
 	public String getDepartmentName()
 	{
@@ -253,11 +251,6 @@ public class Client
 		return departmentName;
 	}
 
-	public void setDepartmentName(String departmentName)
-	{
-	
-		this.departmentName = departmentName;
-	}
 
 	public boolean isAdmin()
 	{
@@ -265,11 +258,6 @@ public class Client
 		return admin;
 	}
 
-	public void setAdmin(boolean admin)
-	{
-	
-		this.admin = admin;
-	}
 
 	public Server getServer()
 	{
@@ -277,11 +265,6 @@ public class Client
 		return server;
 	}
 
-	public void setServer(Server server)
-	{
-	
-		this.server = server;
-	}
 
 	public Template getPlan()
 	{

@@ -21,7 +21,8 @@ public class Server implements ServerInterface
 	Hashtable<String, User> users = new Hashtable<String, User>();
 	Hashtable<String, User> admins = new Hashtable<String, User>();
 	Hashtable<String, Department> dept = new Hashtable<String, Department>();
-
+	BusinessPlanner bp;
+	
 	public Server()
 	{
 	}
