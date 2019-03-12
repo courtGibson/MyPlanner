@@ -25,9 +25,9 @@ public class Client
 	Template plan;
 	
 	/**
-	 * @param name
-	 * @param username
-	 * @param password
+	 * @param name of client
+	 * @param username of client
+	 * @param password of client
 	 */
 	private Client(String name, String username, String password)
 	{
@@ -36,17 +36,16 @@ public class Client
 		this.password = password;
 		this.departmentName = null;
 		this.admin = false;
-		this.plan = null; 
-		
+		this.plan = null; 	
 	}
 	
 
 	/**
-	 * @param name
-	 * @param newUsername
-	 * @param newPassword
-	 * @param deptName
-	 * @param admin
+	 * @param name of new user
+	 * @param newUsername of new user
+	 * @param newPassword of new user
+	 * @param deptName new user belongs to
+	 * @param admin value of new user
 	 */
 	public void addUser(String name, String newUsername, String newPassword, String deptName, boolean admin) throws RemoteException
 	{
@@ -61,8 +60,8 @@ public class Client
 	}
 	
 	/**
-	 * @param enteredUsername
-	 * @param enteredPassword
+	 * @param enteredUsername of admin client logging in
+	 * @param enteredPassword of admin client logging in
 	 */
 	public void adminLogin(String enteredUsername, String enteredPassword) throws RemoteException
 	{
@@ -72,8 +71,8 @@ public class Client
 	}
 	
 	/**
-	 * @param enteredUsername
-	 * @param enteredPassword
+	 * @param enteredUsername of user client logging in
+	 * @param enteredPassword of user client logging in
 	 */
 	public void userLogin(String enteredUsername, String enteredPassword) throws RemoteException
 	{
@@ -83,8 +82,9 @@ public class Client
 	}
 
 	/**
-	 * @param planName
-	 * @return
+	 * @param planName requested by client
+	 * @return Template plan with that name if it exists, 
+	 *               if not, throw exception
 	 */
 	public Template getPlan(String planName) throws RemoteException
 	{
@@ -95,7 +95,7 @@ public class Client
 	}
 
 	/**
-	 * @return
+	 * @return ArrayList of plans in the department
 	 */
 	public ArrayList<Template> getDeptPlans() throws RemoteException
 	{
@@ -103,9 +103,13 @@ public class Client
 		return currentDepartment.getPlans();
 	}
 	
-	//Need help figuring out how to make a new Template with their code
+	
 	/**
-	 * @param t
+	 * @param templateName of the template the client wants to create a plan based on
+	 * @param newPlanName of the new plan **must include year in name
+	 * 
+	 * If not an admin, throw exception
+	 * If the given template name does not exist, throw exception
 	 */
 	public void makePlan(String templateName, String newPlanName)
 	{
@@ -128,7 +132,8 @@ public class Client
 	}
 	
 	/**
-	 * 
+	 * Calls update plan method in the server 
+	 * If not an admin, throw exception
 	 */
 	public void savePlan() throws RemoteException
 	{
@@ -144,7 +149,8 @@ public class Client
 	}
 
 	/**
-	 * @param editable
+	 * @param editable boolean to be set for the client's current plan
+	 * If not an admin, throw exception
 	 */
 	public void changeEditStatus(boolean editable) throws RemoteException
 	{
@@ -160,10 +166,10 @@ public class Client
 		
 	}
 	
-	//Not sure if this will add the section in the right spot or not
-	//    //s is node to be added to
 	/**
-	 * @param s
+	 * @param s TemplateSection to add a branch to
+	 * 
+	 * If not admin or plan is not currently editable, throw exception
 	 */
 	public void editAdd(TemplateSection s) throws RemoteException
 	{
@@ -181,7 +187,9 @@ public class Client
 	}
 
 	/**
-	 * @param s
+	 * @param s TemplateSection to remove
+	 * 
+	 * If not admin or plan is not currently editable, throw exception
 	 */
 	public void editRemove(TemplateSection s) throws RemoteException
 	{
@@ -202,8 +210,10 @@ public class Client
 	
 
 	/**
-	 * @param s
-	 * @param content
+	 * @param s TemplateSection to add content to
+	 * @param content to be added
+	 * 
+	 * If not admin or plan is not currently editable, throw exception
 	 */
 	public void editAddContent(TemplateSection s, Content content) throws RemoteException
 	{
@@ -239,6 +249,7 @@ public class Client
 	
 	
 	/**
+	 * Main function that starts the Client
 	 * @param args
 	 */
 	public static void main(String[] args)

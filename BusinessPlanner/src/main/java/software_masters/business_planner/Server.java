@@ -23,11 +23,22 @@ public class Server implements ServerInterface
 	Hashtable<String, Department> dept = new Hashtable<String, Department>();
 	BusinessPlanner bp = new BusinessPlanner();
 	
+	/**
+	 * 
+	 */
 	public Server()
 	{
 		
 	}
 
+	
+	/* 
+	 * creates and adds a user to either the admins or users hash based on given information
+	 * 
+	 * 
+	 * (non-Javadoc)
+	 * @see software_masters.business_planner.ServerInterface#addUsers(java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean)
+	 */
 	public void addUsers(String name, String newUserName, String newPassword, String deptName, boolean admin)
 	{
 		User u = new User(name, newUserName, newPassword, deptName, admin);
@@ -43,6 +54,17 @@ public class Server implements ServerInterface
 		}
 	}
 
+
+	/* 
+	 * Looks up the client's given username in the admins hashTable, which returns a user object
+	 * Checks client's password to see if it matches
+	 * If so, returns the department name and string of admin boolean
+	 * 
+	 * If username or password do not match, throw exception
+	 * 
+	 * (non-Javadoc)
+	 * @see software_masters.business_planner.ServerInterface#adminLogin(java.lang.String, java.lang.String)
+	 */
 	public String[] adminLogin(String username, String password)
 	{
 
@@ -63,6 +85,16 @@ public class Server implements ServerInterface
 
 	}
 
+	/* 
+	 * Looks up the client's given username in the users hashTable, which returns a user object
+	 * Checks client's password to see if it matches
+	 * If so, returns the department name
+	 * 
+	 * If username or password do not match, throw exception
+	 * 
+	 * (non-Javadoc)
+	 * @see software_masters.business_planner.ServerInterface#userLogin(java.lang.String, java.lang.String)
+	 */
 	public String userLogin(String username, String password)
 	{
 
@@ -81,6 +113,12 @@ public class Server implements ServerInterface
 
 	}
 
+	/* 
+	 * calls getPlan in the user's department
+	 * 
+	 * (non-Javadoc)
+	 * @see software_masters.business_planner.ServerInterface#getPlan(java.lang.String, java.lang.String)
+	 */
 	public Template getPlan(String planName, String deptName)
 	{
 		Department userDept = dept.get(deptName);
@@ -89,6 +127,12 @@ public class Server implements ServerInterface
 		return plan;
 	}
 
+	/* 
+	 * calls update plan in the user's department
+	 * 
+	 * (non-Javadoc)
+	 * @see software_masters.business_planner.ServerInterface#updatePlan(software_masters.business_planner.Template, java.lang.String)
+	 */
 	public void updatePlan(Template plan, String deptName)
 	{
 		Department userDept = dept.get(deptName);
@@ -96,6 +140,10 @@ public class Server implements ServerInterface
 
 	}
 
+	/**
+	 * Main to start the server
+	 * @param args
+	 */
 	public static void main(String args[])
 	{
 
@@ -117,6 +165,9 @@ public class Server implements ServerInterface
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see software_masters.business_planner.ServerInterface#sayHello()
+	 */
 	public String sayHello() throws RemoteException
 	{
 		
