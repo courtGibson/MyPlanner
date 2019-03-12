@@ -42,15 +42,18 @@ public class Server implements ServerInterface
 	public void addUsers(String name, String newUserName, String newPassword, String deptName, boolean admin)
 	{
 		User u = new User(name, newUserName, newPassword, deptName, admin);
-
+		Department d = dept.get("deptName");
+		
 		if (admin == true)
 		{
 			admins.put(newUserName, u);
+			d.addAdmin(u);
 		}
 
 		else
 		{
 			users.put(newUserName, u);
+			d.addUser(u);
 		}
 	}
 
@@ -139,6 +142,12 @@ public class Server implements ServerInterface
 		userDept.updatePlan(plan);
 
 	}
+	
+	public void addDept(String deptName)
+	{
+		Department d = new Department(deptName);
+		dept.put(deptName, d);
+	}
 
 	/**
 	 * Main to start the server
@@ -149,12 +158,12 @@ public class Server implements ServerInterface
 
 		try
 		{
-			Server obj = new Server();
-			ServerInterface server = (ServerInterface) UnicastRemoteObject.exportObject(obj, 0);
+			Server server = new Server();
+			ServerInterface stub = (ServerInterface) UnicastRemoteObject.exportObject(server, 0);
 
 			// Bind the remote object's stub in the registry
 			Registry registry = LocateRegistry.getRegistry();
-			registry.bind("Sprint 2", server);
+			registry.bind("Server", stub);
 
 			System.err.println("Server ready");
 		} 

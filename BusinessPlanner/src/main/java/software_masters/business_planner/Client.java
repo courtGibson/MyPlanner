@@ -21,15 +21,16 @@ public class Client
 	String password;
 	String departmentName;
 	boolean admin;
-	static Server server;
+    Server server;
 	Template plan;
 	
 	/**
 	 * @param name of client
 	 * @param username of client
 	 * @param password of client
+	 * @param serverProxy 
 	 */
-	private Client(String name, String username, String password)
+    public Client(String name, String username, String password, Server server)
 	{
 		this.name = name;
 		this.username = username;
@@ -37,6 +38,7 @@ public class Client
 		this.departmentName = null;
 		this.admin = false;
 		this.plan = null; 	
+		this.server = server;
 	}
 	
 
@@ -208,6 +210,14 @@ public class Client
 		
 	}
 	
+	
+	public void addDept(String newDeptName)
+	{
+		if (admin == true)
+		{
+			server.addDept(newDeptName);
+		}
+	}
 
 	/**
 	 * @param s TemplateSection to add content to
@@ -252,7 +262,7 @@ public class Client
 	 * Main function that starts the Client
 	 * @param args
 	 */
-	public static void main(String[] args)
+	/*public static void main(String[] args)
 	{
 
 		String host = (args.length < 1) ? null : args[0];
@@ -268,7 +278,7 @@ public class Client
 			System.err.println("Client exception: " + e.toString());
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 	public String getName()
 	{
@@ -309,6 +319,11 @@ public class Client
 	{
 	
 		return server;
+	}
+	
+	public void setServer(Server s)
+	{
+		this.server = s;
 	}
 
 
