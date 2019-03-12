@@ -88,7 +88,10 @@ public class Client
 	 */
 	public Template getPlan(String planName) throws RemoteException
 	{
-		return server.getPlan(planName, departmentName);
+		
+		Template plan = server.getPlan(planName, departmentName);
+		this.setPlan(plan);
+		return plan;
 	}
 
 	/**

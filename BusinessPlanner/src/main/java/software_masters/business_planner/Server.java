@@ -25,6 +25,7 @@ public class Server implements ServerInterface
 	
 	public Server()
 	{
+		
 	}
 
 	public void addUsers(String name, String newUserName, String newPassword, String deptName, boolean admin)
