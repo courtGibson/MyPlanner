@@ -40,24 +40,6 @@ public class Client
 		
 	}
 	
-	/**
-	 * @param name
-	 * @param newUsername
-	 * @param newPassword
-	 * @param deptName
-	 * @param admin
-	 */
-	private Client(String name, String newUsername, String newPassword, String deptName, boolean admin)
-	{
-		this.name = name;
-		this.username = newUsername;
-		this.password = newPassword;
-		this.departmentName = deptName;
-		this.admin = admin;
-		this.server = server;
-		this.plan = null;
-		
-	}
 
 	/**
 	 * @param name
@@ -68,7 +50,14 @@ public class Client
 	 */
 	public void addUser(String name, String newUsername, String newPassword, String deptName, boolean admin)
 	{
-		server.addUsers(name, newUsername, newPassword, deptName, admin);
+		if(admin == true) 
+		{
+			server.addUsers(name, newUsername, newPassword, deptName, admin);
+		}
+		else
+		{
+			throw new IllegalArgumentException("Only admins can add users.");
+		}
 	}
 	
 	/**
@@ -124,9 +113,13 @@ public class Client
 			Department d = server.dept.get(departmentName);
 			d.addPlan(newPlan);
 		}
+		else if(admin == false)
+		{
+			throw new IllegalArgumentException("Only admins can make plans.");
+		}
 		else
 		{
-			throw new IllegalArgumentException("This template does not exist.");
+			throw new IllegalArgumentException("No template with that name exists.");
 		}
 	
 	}
@@ -136,7 +129,15 @@ public class Client
 	 */
 	public void savePlan()
 	{
-		server.updatePlan(plan, departmentName);
+		if(admin == true || plan.isEditable() == true) 
+		{
+			server.updatePlan(plan, departmentName);
+		}
+		else
+		{
+			throw new IllegalArgumentException("Plan cannot be saved.");
+		}
+		
 	}
 
 	/**
@@ -144,8 +145,16 @@ public class Client
 	 */
 	public void changeEditStatus(boolean editable)
 	{
-		plan.setEditable(editable);
-		savePlan();
+		if(admin == true) 
+		{
+			plan.setEditable(editable);
+			savePlan();
+		}
+		else
+		{
+			throw new IllegalArgumentException("Only admins can change the editable status of a plan.");
+		}
+		
 	}
 	
 	//Not sure if this will add the section in the right spot or not
@@ -155,50 +164,73 @@ public class Client
 	 */
 	public void editAdd(TemplateSection s)
 	{
-		///////// need to figure out how to build branches
-		server.bp.setUserTemplate(plan);
-		server.bp.setCurrent(s);
-		server.bp.addBranch();
-		savePlan();
-		
+		if(admin == true || plan.isEditable() == true) 
+		{
+			server.bp.setUserTemplate(plan);
+			server.bp.setCurrent(s);
+			server.bp.addBranch();
+			savePlan();
+		}
+		else
+		{
+			throw new IllegalArgumentException("Cannot add plan sections.");
+		}
 	}
 
-	//Same here
-	//   // maybe fixed it??
 	/**
 	 * @param s
 	 */
 	public void editRemove(TemplateSection s)
 	{
-		server.bp.setUserTemplate(plan);
-		server.bp.setCurrent(s);
-		server.bp.removeSection();
-		savePlan();
+		if(admin == true || plan.isEditable() == true) 
+		{
+			server.bp.setUserTemplate(plan);
+			server.bp.setCurrent(s);
+			server.bp.removeSection();
+			savePlan();
+		}
+		else
+		{
+			throw new IllegalArgumentException("Cannot remove plan sections.");
+		}
+
 		
 	}
 	
-	//Not sure how to access past the root again
-	//   //should be fine since adding directly to the "node"
+
 	/**
 	 * @param s
 	 * @param content
 	 */
 	public void editAddContent(TemplateSection s, Content content)
 	{
-		server.bp.setUserTemplate(plan);
-		server.bp.setCurrent(s);
-		
-		server.bp.getCurrent().addContent(content);
-		savePlan();
+		if(admin == true || plan.isEditable() == true) 
+		{
+			server.bp.setUserTemplate(plan);
+			server.bp.setCurrent(s);
+			server.bp.getCurrent().addContent(content);
+			savePlan();
+		}
+		else
+		{
+			throw new IllegalArgumentException("Cannot add plan content.");
+		}
 	}
 	
 	public void editSetContent(TemplateSection s, ArrayList<Content> contents)
-	{
-		server.bp.setUserTemplate(plan);
-		server.bp.setCurrent(s);
+	{		
+		if(admin == true || plan.isEditable() == true) 
+		{
+			server.bp.setUserTemplate(plan);
+			server.bp.setCurrent(s);
+			server.bp.getCurrent().setContents(contents);
+			savePlan();
+		}
+		else
+		{
+			throw new IllegalArgumentException("Cannot edit plan content.");
+		}
 		
-		server.bp.getCurrent().setContents(contents);
-		savePlan();
 	}
 	
 	
