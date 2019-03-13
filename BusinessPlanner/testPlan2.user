@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="10.0.2" class="java.beans.XMLDecoder">
- <object class="software_masters.business_planner.Template" id="Template0">
+<java version="1.8.0_121" class="java.beans.XMLDecoder">
+ <object class="software_masters.business_planner.Template">
   <void property="developerTemplateName">
    <string>Centre_Assessment</string>
   </void>
   <void property="root">
    <object class="software_masters.business_planner.TemplateSection" id="TemplateSection0">
     <void property="canCopy">
-     <void class="software_masters.business_planner.Template" id="Field0" method="getField">
-      <string>editable</string>
-      <void id="Boolean0" method="get">
-       <object idref="Template0"/>
-      </void>
-     </void>
-     <object idref="Boolean0"/>
+     <boolean>false</boolean>
     </void>
     <void property="category">
      <string>College Mission</string>
@@ -22,7 +16,7 @@
      <void method="add">
       <object class="software_masters.business_planner.TemplateSection" id="TemplateSection1">
        <void property="canCopy">
-        <object idref="Boolean0"/>
+        <boolean>false</boolean>
        </void>
        <void property="category">
         <string>Program Mission</string>

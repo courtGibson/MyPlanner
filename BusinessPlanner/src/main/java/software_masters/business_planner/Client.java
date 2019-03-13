@@ -29,7 +29,7 @@ public class Client
 	 * @param name of client
 	 * @param username of client
 	 * @param password of client
-	 * @param serverProxy proxy to the server
+	 * @param server proxy to the server
 	 */
     public Client(String name, String username, String password, Server server)
 	{
@@ -260,9 +260,9 @@ public class Client
 	}
 	
 	/**
-	 * @param s 
-	 * @param contents
-	 * @throws RemoteException
+	 * @param s this is the template section that is being edited
+	 * @param contents this is an ArrayList of content objects to be set
+	 * @throws RemoteException if user should not be able to set content
 	 */
 	public void editSetContent(TemplateSection s, ArrayList<Content> contents) throws RemoteException
 	{		
@@ -284,7 +284,7 @@ public class Client
 	
 	/**
 	 * Main function that starts the Client
-	 * @param args
+	 * @param args arguments for startup
 	 */
 	public static void main(String[] args)
 	{
