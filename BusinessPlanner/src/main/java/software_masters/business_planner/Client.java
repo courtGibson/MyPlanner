@@ -269,23 +269,20 @@ public class Client
 	 * Main function that starts the Client
 	 * @param args
 	 */
-	/*public static void main(String[] args)
+	public static void main(String[] args)
 	{
 
 		String host = (args.length < 1) ? null : args[0];
-		try
-		{
-			Registry registry = LocateRegistry.getRegistry(host);
-			server = (Server) registry.lookup("Server");
-			String response = server.sayHello();
-			System.out.println("response: " + response);
-		} 
-		catch (Exception e)
-		{
-			System.err.println("Client exception: " + e.toString());
-			e.printStackTrace();
-		}
-	}*/
+        try {
+            Registry registry = LocateRegistry.getRegistry(host);
+            Server stub = (Server) registry.lookup("server");
+            String response = stub.sayHello();
+            System.out.println("response: " + response);
+        } catch (Exception e) {
+            System.err.println("Client exception: " + e.toString());
+            e.printStackTrace();
+        }
+	}
 
 	
 	

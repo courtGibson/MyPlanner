@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_121" class="java.beans.XMLDecoder">
- <object class="software_masters.business_planner.Template">
+<java version="10.0.2" class="java.beans.XMLDecoder">
+ <object class="software_masters.business_planner.Template" id="Template0">
+  <void class="software_masters.business_planner.Template" method="getField">
+   <string>editable</string>
+   <void method="set">
+    <object idref="Template0"/>
+    <boolean>true</boolean>
+   </void>
+  </void>
   <void property="developerTemplateName">
    <string>VMOSA</string>
   </void>
@@ -71,8 +78,113 @@
           </void>
          </object>
         </void>
+        <void method="add">
+         <object class="software_masters.business_planner.TemplateSection" id="TemplateSection5">
+          <void property="category">
+           <string>Objectives</string>
+          </void>
+          <void property="children">
+           <void method="add">
+            <object class="software_masters.business_planner.TemplateSection" id="TemplateSection6">
+             <void property="category">
+              <string>Strategies</string>
+             </void>
+             <void property="children">
+              <void method="add">
+               <object class="software_masters.business_planner.TemplateSection" id="TemplateSection7">
+                <void property="category">
+                 <string>Action Plans</string>
+                </void>
+                <void property="contents">
+                 <void method="add">
+                  <object class="software_masters.business_planner.Text"/>
+                 </void>
+                </void>
+                <void property="parent">
+                 <object idref="TemplateSection6"/>
+                </void>
+               </object>
+              </void>
+             </void>
+             <void property="contents">
+              <void method="add">
+               <object class="software_masters.business_planner.Text"/>
+              </void>
+             </void>
+             <void property="parent">
+              <object idref="TemplateSection5"/>
+             </void>
+            </object>
+           </void>
+          </void>
+          <void property="contents">
+           <void method="add">
+            <object class="software_masters.business_planner.Text"/>
+           </void>
+          </void>
+          <void property="parent">
+           <object idref="TemplateSection2"/>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="software_masters.business_planner.TemplateSection" id="TemplateSection8">
+          <void property="category">
+           <string>Objectives</string>
+          </void>
+          <void property="children">
+           <void method="add">
+            <object class="software_masters.business_planner.TemplateSection" id="TemplateSection9">
+             <void property="category">
+              <string>Strategies</string>
+             </void>
+             <void property="children">
+              <void method="add">
+               <object class="software_masters.business_planner.TemplateSection" id="TemplateSection10">
+                <void property="category">
+                 <string>Action Plans</string>
+                </void>
+                <void property="contents">
+                 <void method="add">
+                  <object class="software_masters.business_planner.Text"/>
+                 </void>
+                </void>
+                <void property="parent">
+                 <object idref="TemplateSection9"/>
+                </void>
+               </object>
+              </void>
+             </void>
+             <void property="contents">
+              <void method="add">
+               <object class="software_masters.business_planner.Text"/>
+              </void>
+             </void>
+             <void property="parent">
+              <object idref="TemplateSection8"/>
+             </void>
+            </object>
+           </void>
+          </void>
+          <void property="contents">
+           <void method="add">
+            <object class="software_masters.business_planner.Text"/>
+           </void>
+          </void>
+          <void property="parent">
+           <object idref="TemplateSection2"/>
+          </void>
+         </object>
+        </void>
        </void>
-       <void property="contents">
+       <void id="ArrayList0" property="contents">
+        <void method="add">
+         <object class="software_masters.business_planner.Text">
+          <void property="textString">
+           <string>goodbye</string>
+          </void>
+         </object>
+        </void>
         <void method="add">
          <object class="software_masters.business_planner.Text"/>
         </void>
@@ -87,9 +199,7 @@
      </void>
     </void>
     <void property="contents">
-     <void method="add">
-      <object class="software_masters.business_planner.Text"/>
-     </void>
+     <object idref="ArrayList0"/>
     </void>
     <void property="name">
      <string>Vision</string>

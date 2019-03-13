@@ -163,22 +163,19 @@ public class Server implements ServerInterface
 	public static void main(String args[])
 	{
 
-		try
-		{
-			Server server = new Server();
-			ServerInterface stub = (ServerInterface) UnicastRemoteObject.exportObject(server, 0);
+		try {
+            Server obj = new Server();
+            Server stub = (Server) UnicastRemoteObject.exportObject(obj, 0);
 
-			// Bind the remote object's stub in the registry
-			Registry registry = LocateRegistry.getRegistry();
-			registry.bind("Server", stub);
+            // Bind the remote object's stub in the registry
+            Registry registry = LocateRegistry.getRegistry();
+            registry.bind("server", stub);
 
-			System.err.println("Server ready");
-		} 
-		catch (Exception e)
-		{
-			System.err.println("Server exception: " + e.toString());
-			e.printStackTrace();
-		}
+            System.err.println("Server ready");
+        } catch (Exception e) {
+            System.err.println("Server exception: " + e.toString());
+            e.printStackTrace();
+        }
 	}
 
 	/* (non-Javadoc)
