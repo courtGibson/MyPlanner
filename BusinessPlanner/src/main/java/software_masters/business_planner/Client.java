@@ -123,6 +123,7 @@ public class Client
 			Template newPlan = server.bp.getUserTemplate();
 			Department d = server.dept.get(departmentName);
 			d.addPlan(newPlan);
+			newPlan.save();
 		}
 		else if(this.isAdmin() == false)
 		{
