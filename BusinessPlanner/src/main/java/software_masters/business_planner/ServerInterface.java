@@ -26,7 +26,7 @@ public interface ServerInterface extends Remote
 	 * @param admin value of the user
 	 * @throws RemoteException
 	 */
-	public void addUsers(String name, String newUserName, String newPassword, String deptName, boolean admin) throws RemoteException;
+	public void addUser(String name, String newUserName, String newPassword, String deptName, boolean admin) throws RemoteException;
 
 	/**
 	 * @param username of the admin client

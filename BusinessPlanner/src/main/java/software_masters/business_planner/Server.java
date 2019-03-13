@@ -29,6 +29,11 @@ public class Server implements ServerInterface
 	public Server()
 	{
 		
+		User u = new User("Steve", "Steve.user", "Steve.pass", "Init", true);
+		admins.put("Steve.user", u);
+		Department d = new Department("Init");
+		dept.put("Init", d);
+		
 	}
 
 	
@@ -39,11 +44,11 @@ public class Server implements ServerInterface
 	 * (non-Javadoc)
 	 * @see software_masters.business_planner.ServerInterface#addUsers(java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean)
 	 */
-	public void addUsers(String name, String newUserName, String newPassword, String deptName, boolean admin)
+	public void addUser(String name, String newUserName, String newPassword, String deptName, boolean admin)
 	{
 		User u = new User(name, newUserName, newPassword, deptName, admin);
 		Department d = dept.get(deptName);
-		
+		//System.out.println(d);
 		if (admin == true)
 		{
 			admins.put(newUserName, u);

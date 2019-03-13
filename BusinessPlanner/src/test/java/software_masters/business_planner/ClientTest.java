@@ -23,6 +23,7 @@ public class ClientTest
 		server = new Server();
 		registry.rebind("server", server);
 		serverProxy = (Server) registry.lookup("server");
+		
 
 	}
 
@@ -30,8 +31,11 @@ public class ClientTest
 	public static void test() throws RemoteException, NotBoundException
 	{
 		Client client = new Client("Steve", "Steve.user", "Steve.pass", serverProxy);
+		client.adminLogin("Steve.user", "Steve.pass");
+		
 		client.addDept("Biology");
-		server.addUsers("Steve", "Steve.user", "Steve.pass", "Biology", true);
+		assertEquals("Biology", server.dept.get("Biology").getDeptName());
+		client.addUser("Sarah", "Sarah.user", "Sarah.pass", "Biology", false);
 		
 		
 		
