@@ -151,7 +151,6 @@ public class Department implements Serializable
 	/**
 	 * @return BusinessPlanner business planner object
 	 * 
-	 * ??????? NEED THIS ??????
 	 */
 	public BusinessPlanner getBp()
 	{
