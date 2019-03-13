@@ -23,7 +23,6 @@ public class ClientTest
 		server = new Server();
 		registry.rebind("server", server);
 		serverProxy = (Server) registry.lookup("server");
-		
 
 	}
 
@@ -58,6 +57,8 @@ public class ClientTest
 		{
 		  e.getMessage();
 		}
+		
+		
 		
 		
 	}
