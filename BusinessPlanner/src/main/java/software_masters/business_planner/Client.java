@@ -336,7 +336,7 @@ public class Client
 	}
 
 
-	public Template getPlan()
+	public Template getClientsPlan()
 	{
 	
 		return plan;
