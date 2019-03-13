@@ -32,6 +32,7 @@ public class ClientTest
 		//Make a new client to match the default client info created when the 
 		// server is made, and login in using the admin login
 		Client client = new Client("Steve", "Steve.user", "Steve.pass", serverProxy);
+		
 		// before login, this clients admin value should be false
 		// after login, need information is returned and set
 		// its admin value should then be true
@@ -43,6 +44,7 @@ public class ClientTest
 		// then create a client for that user and login
 		client.addUser("anAdmin", "anAdmin.user", "anAdmin.pass", "Init", true);
 		Client adminClient = new Client("anAdmin", "anAdmin.user", "anAdmin.pass", serverProxy);
+		
 		// check that this client's admin value is false,
 		// login, then check to see that it is true
 		assertEquals(false, adminClient.isAdmin());
