@@ -30,23 +30,35 @@ public class ClientTest
 	@Test
 	public static void test() throws RemoteException, NotBoundException
 	{
+		//Make a new client to match the default client info created when the 
+		// server is made, and login in using the admin login
 		Client client = new Client("Steve", "Steve.user", "Steve.pass", serverProxy);
 		client.adminLogin("Steve.user", "Steve.pass");
 		
+		// make a new department and check to see if added to server's dept hash
 		client.addDept("Biology");
 		assertEquals("Biology", server.dept.get("Biology").getDeptName());
+		
+		//add a new user and check to see if added to server's user hash
 		client.addUser("Sarah", "Sarah.user", "Sarah.pass", "Biology", false);
+		assertEquals("Sarah", server.users.get("Sarah.user").getName());
 		
+		//make a new client for the new user that was just added
+		// and login using user login
+		Client userClient = new Client("Sarah", "Sarah.user", "Sarah.pass", serverProxy);
+		userClient.userLogin("Sarah.user", "Sarah.pass");
 		
-		
-		/*try
-		{*/
-			
-		/*}
+		// try to add a department through userClient (not an admin)
+		try
+		{
+			userClient.addDept("History");
+			fail("Should not have been able to add department");
+		}
 		catch(IllegalArgumentException e)
 		{
 		  e.getMessage();
-		}*/
+		}
+		
 		
 	}
 	
