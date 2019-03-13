@@ -145,6 +145,7 @@ public class Server implements ServerInterface
 	{
 		Department userDept = dept.get(deptName);
 		userDept.updatePlan(plan);
+		plan.save();
 
 	}
 	

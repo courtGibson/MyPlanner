@@ -76,6 +76,15 @@ public class ClientTest
 		  e.getMessage();
 		}
 		
+		try
+		{
+			userClient.addUser("Joe", "Joe.user", "Joe.pass", "Biology", true);
+			fail("Should not have been able to add department");
+		}
+		catch(IllegalArgumentException e)
+		{
+		  e.getMessage();
+		}
 		
 		
 		
