@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 /**
  * @author Courtney
+ * @author Keenan
  *
  */
 public class Department implements Serializable 

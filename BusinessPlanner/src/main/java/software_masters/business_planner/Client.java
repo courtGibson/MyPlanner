@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 /**
  * @author Courtney
+ * @author Keenan
  *
  */
 
@@ -28,7 +29,7 @@ public class Client
 	 * @param name of client
 	 * @param username of client
 	 * @param password of client
-	 * @param serverProxy 
+	 * @param serverProxy proxy to the server
 	 */
     public Client(String name, String username, String password, Server server)
 	{
@@ -42,12 +43,14 @@ public class Client
 	}
 	
 
+	
 	/**
 	 * @param name of new user
 	 * @param newUsername of new user
 	 * @param newPassword of new user
 	 * @param deptName new user belongs to
-	 * @param admin value of new user
+	 * @param adminVal value of new user
+	 * @throws RemoteException if info doesn't match a user
 	 */
 	public void addUser(String name, String newUsername, String newPassword, String deptName, boolean adminVal) throws RemoteException
 	{
@@ -64,6 +67,7 @@ public class Client
 	/**
 	 * @param enteredUsername of admin client logging in
 	 * @param enteredPassword of admin client logging in
+	 * @throws RemoteException if info doesn't match an admin
 	 */
 	public void adminLogin(String enteredUsername, String enteredPassword) throws RemoteException
 	{
@@ -77,6 +81,7 @@ public class Client
 	/**
 	 * @param enteredUsername of user client logging in
 	 * @param enteredPassword of user client logging in
+	 * @throws RemoteException if info doesn't match an admin
 	 */
 	public void userLogin(String enteredUsername, String enteredPassword) throws RemoteException
 	{
@@ -89,6 +94,7 @@ public class Client
 	 * @param planName requested by client
 	 * @return Template plan with that name if it exists, 
 	 *               if not, throw exception
+	 * @throws RemoteException if info doesn't match an admin
 	 */
 	public Template getPlan(String planName) throws RemoteException
 	{
@@ -100,6 +106,7 @@ public class Client
 
 	/**
 	 * @return ArrayList of plans in the department
+	 * @throws RemoteException if info doesn't match an admin
 	 */
 	public ArrayList<Template> getDeptPlans() throws RemoteException
 	{
@@ -139,6 +146,7 @@ public class Client
 	/**
 	 * Calls update plan method in the server 
 	 * If not an admin, throw exception
+	 * @throws RemoteException if client is not allowed to save
 	 */
 	public void savePlan() throws RemoteException
 	{
@@ -156,6 +164,7 @@ public class Client
 	/**
 	 * @param editable boolean to be set for the client's current plan
 	 * If not an admin, throw exception
+	 * @throws RemoteException if client is not allowed to change status
 	 */
 	public void changeEditStatus(boolean editable) throws RemoteException
 	{
@@ -173,7 +182,7 @@ public class Client
 	
 	/**
 	 * @param s TemplateSection to add a branch to
-	 * 
+	 * @throws RemoteException if client is not allowed to edit
 	 * If not admin or plan is not currently editable, throw exception
 	 */
 	public void editAdd(TemplateSection s) throws RemoteException
@@ -193,7 +202,7 @@ public class Client
 
 	/**
 	 * @param s TemplateSection to remove
-	 * 
+	 * @throws RemoteException if client is not allowed to edit
 	 * If not admin or plan is not currently editable, throw exception
 	 */
 	public void editRemove(TemplateSection s) throws RemoteException
@@ -214,6 +223,9 @@ public class Client
 	}
 	
 	
+	/**
+	 * @param newDeptName name of the department
+	 */
 	public void addDept(String newDeptName)
 	{
 		if (this.admin == true)
@@ -229,7 +241,7 @@ public class Client
 	/**
 	 * @param s TemplateSection to add content to
 	 * @param content to be added
-	 * 
+	 * @throws RemoteException if client is not allowed to edit
 	 * If not admin or plan is not currently editable, throw exception
 	 */
 	public void editAddContent(TemplateSection s, Content content) throws RemoteException
@@ -247,6 +259,11 @@ public class Client
 		}
 	}
 	
+	/**
+	 * @param s 
+	 * @param contents
+	 * @throws RemoteException
+	 */
 	public void editSetContent(TemplateSection s, ArrayList<Content> contents) throws RemoteException
 	{		
 		if(this.admin == true || plan.isEditable() == true) 
