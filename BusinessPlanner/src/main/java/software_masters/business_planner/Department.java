@@ -103,13 +103,11 @@ public class Department implements Serializable
 			{
 				plans.remove(tempPlan);
 				plans.add(plan);
+				return;
 			}
-			else
-			{
-				plans.add(plan);
-			}
+			
 		}
-		throw new IllegalArgumentException("This plan does not exist in this department");		
+		plans.add(plan);
 
 	}
 	
