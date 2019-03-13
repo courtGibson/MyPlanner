@@ -49,11 +49,11 @@ public class Client
 	 * @param deptName new user belongs to
 	 * @param admin value of new user
 	 */
-	public void addUser(String name, String newUsername, String newPassword, String deptName, boolean admin) throws RemoteException
+	public void addUser(String name, String newUsername, String newPassword, String deptName, boolean adminVal) throws RemoteException
 	{
-		if(this.admin == true) 
+		if(this.isAdmin() == true) 
 		{
-			server.addUser(name, newUsername, newPassword, deptName, admin);
+			server.addUser(name, newUsername, newPassword, deptName, adminVal);
 		}
 		else
 		{
@@ -117,14 +117,14 @@ public class Client
 	 */
 	public void makePlan(String templateName, String newPlanName)
 	{
-		if (this.admin == true && (templateName.equals("VMOSA") || templateName.equals("Centre") || templateName.equals("OKR")))
+		if (this.isAdmin() == true && (templateName.equals("VMOSA") || templateName.equals("Centre") || templateName.equals("OKR")))
 		{
 			server.bp.chooseTemplate(templateName, newPlanName);
 			Template newPlan = server.bp.getUserTemplate();
 			Department d = server.dept.get(departmentName);
 			d.addPlan(newPlan);
 		}
-		else if(this.admin == false)
+		else if(this.isAdmin() == false)
 		{
 			throw new IllegalArgumentException("Only admins can make plans.");
 		}
@@ -141,7 +141,7 @@ public class Client
 	 */
 	public void savePlan() throws RemoteException
 	{
-		if(this.admin == true || plan.isEditable() == true) 
+		if(this.isAdmin() == true || plan.isEditable() == true) 
 		{
 			server.updatePlan(plan, departmentName);
 		}
@@ -158,7 +158,7 @@ public class Client
 	 */
 	public void changeEditStatus(boolean editable) throws RemoteException
 	{
-		if(this.admin == true) 
+		if(this.isAdmin() == true) 
 		{
 			plan.setEditable(editable);
 			savePlan();
@@ -218,6 +218,10 @@ public class Client
 		if (this.admin == true)
 		{
 			server.addDept(newDeptName);
+		}
+		else
+		{
+			throw new IllegalArgumentException("Only admins can make departments.");
 		}
 	}
 
