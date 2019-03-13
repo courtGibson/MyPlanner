@@ -117,7 +117,7 @@ public class Client
 	 */
 	public void makePlan(String templateName, String newPlanName)
 	{
-		if (this.isAdmin() == true && (templateName.equals("VMOSA") || templateName.equals("Centre") || templateName.equals("OKR")))
+		if (this.isAdmin() == true && (templateName.equals("VMOSA") || templateName.equals("Centre_Assessment") || templateName.equals("OKR")))
 		{
 			server.bp.chooseTemplate(templateName, newPlanName);
 			Template newPlan = server.bp.getUserTemplate();
